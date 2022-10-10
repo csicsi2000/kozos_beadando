@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+//Árpád test
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
