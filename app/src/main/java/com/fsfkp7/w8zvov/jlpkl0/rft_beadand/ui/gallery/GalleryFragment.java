@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.FragmentGalleryBinding;
 
+// Ez egy másik branch
 public class GalleryFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
