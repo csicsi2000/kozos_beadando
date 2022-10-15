@@ -1,5 +1,7 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;

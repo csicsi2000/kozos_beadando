@@ -5,7 +5,8 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 public class Teacher {
-    public Teacher(String name, Bitmap image, List<String> subjects, String email, String phoneNumber) {
+    public Teacher(int id, String name, Bitmap image, List<String> subjects, String email, String phoneNumber) {
+        this.id = id;
         this.name = name;
         this.image = image;
         this.subjects = subjects;
@@ -13,6 +14,10 @@ public class Teacher {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Id of the teacher in the databse
+     */
+    public int id;
     /**
      * Name of the teacher
      */
