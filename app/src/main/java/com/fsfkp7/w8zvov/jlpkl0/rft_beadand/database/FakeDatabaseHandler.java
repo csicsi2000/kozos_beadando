@@ -43,6 +43,11 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
         return teachers;
     }
 
+    @Override
+    public String getPasswordFromEmail(String email) {
+        return null;
+    }
+
     private void InitFakeDatabase(){
         teachers.add(new Teacher(
                 0,

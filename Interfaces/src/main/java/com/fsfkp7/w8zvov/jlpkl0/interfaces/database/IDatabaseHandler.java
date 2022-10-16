@@ -25,4 +25,11 @@ public interface IDatabaseHandler {
      * @return
      */
     List<ITeacher> getAllTeachers();
+
+    /**
+     * Returns the hashed password based on the email adress
+     * @param email
+     * @return
+     */
+    String getPasswordFromEmail(String email);
 }
