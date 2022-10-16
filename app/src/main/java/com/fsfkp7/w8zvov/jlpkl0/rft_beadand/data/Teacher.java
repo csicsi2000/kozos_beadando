@@ -2,9 +2,11 @@ package com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data;
 
 import android.graphics.Bitmap;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
+
 import java.util.List;
 
-public class Teacher {
+public class Teacher implements ITeacher {
     public Teacher(int id, String name, Bitmap image, List<String> subjects, String email, String phoneNumber) {
         this.id = id;
         this.name = name;

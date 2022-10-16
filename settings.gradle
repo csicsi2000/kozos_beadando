@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RFT_projekt"
 include ':app'
+include ':SQLiteDatabase'
+include ':Interfaces'

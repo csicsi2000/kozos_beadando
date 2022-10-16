@@ -1,18 +1,18 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.R;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.interfaces.database.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeDatabaseHandler implements DatabaseHandler {
-    private ArrayList<Teacher> teachers = new ArrayList<>();
+public class FakeDatabaseHandler implements IDatabaseHandler {
+    private ArrayList<ITeacher> teachers = new ArrayList<>();
     private Context _context;
 
     public FakeDatabaseHandler(Context context){
@@ -21,25 +21,25 @@ public class FakeDatabaseHandler implements DatabaseHandler {
     }
 
     @Override
-    public boolean addNewTeacher(Teacher teacher) {
+    public boolean addNewTeacher(ITeacher teacher) {
         teachers.add(teacher);
         return true;
     }
 
     @Override
-    public boolean editTeacher(Teacher teacher) {
+    public boolean editTeacher(ITeacher teacher) {
         teachers.set(teacher.id,teacher);
         return true;
     }
 
     @Override
-    public boolean deleteTeacher(Teacher teacher) {
+    public boolean deleteTeacher(ITeacher teacher) {
         teachers.remove(teacher.id);
         return true;
     }
 
     @Override
-    public List<Teacher> getAllTeachers() {
+    public List<ITeacher> getAllTeachers() {
         return teachers;
     }
 
