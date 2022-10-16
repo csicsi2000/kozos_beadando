@@ -22,6 +22,10 @@ public interface ITeacher {
      */
     List<String> subjects = null;
     /**
+     * The price of the lesson per hour
+     */
+    int pricePerHour = 0;
+    /**
      * The email address of the teacher
      */
     String email = null;

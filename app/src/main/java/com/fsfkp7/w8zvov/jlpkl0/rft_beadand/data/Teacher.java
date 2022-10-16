@@ -7,7 +7,7 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import java.util.List;
 
 public class Teacher implements ITeacher {
-    public Teacher(int id, String name, Bitmap image, List<String> subjects, String email, String phoneNumber) {
+    public Teacher(int id, String name, Bitmap image, List<Subject> subjects,String email, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -31,7 +31,7 @@ public class Teacher implements ITeacher {
     /**
      * The subjects hat the teacher can teach
      */
-    List<String> subjects;
+    List<Subject> subjects;
     /**
      * The email address of the teacher
      */
