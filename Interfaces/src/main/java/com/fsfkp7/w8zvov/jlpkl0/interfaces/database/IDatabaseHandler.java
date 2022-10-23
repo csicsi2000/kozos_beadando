@@ -31,5 +31,5 @@ public interface IDatabaseHandler {
      * @param email
      * @return
      */
-    String getPasswordFromEmail(String email);
+    ITeacher getPasswordFromEmail(String email,String password);
 }

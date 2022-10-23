@@ -44,8 +44,18 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
     }
 
     @Override
-    public String getPasswordFromEmail(String email) {
-        return null;
+    public ITeacher getPasswordFromEmail(String email, String password) {
+        return new Teacher(1,
+                "Második Márk",
+                BitmapFactory.decodeResource(_context.getResources(),
+                        R.drawable.missing),
+                new ArrayList<Subject>(){
+                    {
+                        add(new Subject("Matematika",3000));
+                    }
+                },
+                "MM99@gmail.com",
+                "+36703476323");
     }
 
     private void InitFakeDatabase(){
