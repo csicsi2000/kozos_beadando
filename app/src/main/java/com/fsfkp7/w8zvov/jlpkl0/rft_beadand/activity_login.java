@@ -31,7 +31,7 @@ public class activity_login extends AppCompatActivity {
             }
         });
     }
-
+/*
     private void test(){
         IDatabaseHandler databaseHandler = FakeDatabaseHandler();
         ITeacher teacher = databaseHandler.getTeacherFromLogin();
@@ -40,7 +40,8 @@ public class activity_login extends AppCompatActivity {
         }
 
         // másik activty(teacher)
-    }
+    }*/
+
     //function to validate email address.
     private boolean isEmailAddressValid(EditText email){
         String emailEntered = email.getText().toString();
