@@ -10,4 +10,8 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="sign_in">Sign in</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email address</string>
+    <string name="button_signIn_text">Sign in</string>
 </resources>
