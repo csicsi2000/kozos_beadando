@@ -9,20 +9,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
 
 public class activity_login extends AppCompatActivity {
 
     EditText email;
+    EditText password;
     Button button;
+    ITeacher teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        password = findViewById(R.id.editText_password);
         email = findViewById(R.id.editText_email);
         button = findViewById(R.id.button_signIn);
 
@@ -36,21 +40,11 @@ public class activity_login extends AppCompatActivity {
                     Toast.makeText(activity_login.this, "Email address is not valid", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    isLoginValid();
+                    teacher = getTeacherIfExist(email.getText().toString(), password.getText().toString());
                 }
             }
         });
     }
-/*
-    private void test(){
-        IDatabaseHandler databaseHandler = FakeDatabaseHandler();
-        ITeacher teacher = databaseHandler.getTeacherFromLogin();
-        if(teacher == null){
-
-        }
-
-        // másik activty(teacher)
-    }*/
 
     /**
      * function to validate email address.
@@ -71,12 +65,22 @@ public class activity_login extends AppCompatActivity {
         }
     }
 
-    public boolean isLoginValid(){
+    /**
+     * Checks if the teacher exist in the database.
+     * If yes, returns the teacher
+     * @param email
+     * @param password
+     * @return teacher
+     */
+    public ITeacher getTeacherIfExist(String email, String password){
         IDatabaseHandler dbHandler = new FakeDatabaseHandler(getBaseContext());
-        /**
-         * conect and check
-         */
-        return true;
-
+        ITeacher teacher = dbHandler.getPasswordFromEmail(email, password);
+        if (teacher != null){
+            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+            return teacher;
+        } else{
+            Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
+            return  null;
+        }
     }
 }
