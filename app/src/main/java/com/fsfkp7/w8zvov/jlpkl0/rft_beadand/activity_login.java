@@ -19,7 +19,7 @@ public class activity_login extends AppCompatActivity {
     EditText email;
     EditText password;
     Button button;
-    ITeacher teacher;
+    Teacher teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class activity_login extends AppCompatActivity {
                     Toast.makeText(activity_login.this, "Email address is not valid", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    teacher = getTeacherIfExist(email.getText().toString(), password.getText().toString());
+                    teacher = (Teacher) getTeacherIfExist(email.getText().toString(), password.getText().toString());
                 }
             }
         });
