@@ -13,25 +13,25 @@ public interface ITeacher extends Parcelable {
     /**
      * Name of the teacher
      */
-    String name = null;
+    public String name = null;
     /**
      * Image of the teacher
      */
-    Bitmap image = null;
+    public Bitmap image = null;
     /**
      * The subjects hat the teacher can teach
      */
-    List<String> subjects = null;
+    public List<String> subjects = null;
     /**
      * The price of the lesson per hour
      */
-    int pricePerHour = 0;
+    public int pricePerHour = 0;
     /**
      * The email address of the teacher
      */
-    String email = null;
+    public String email = null;
     /**
      * Phone number of the teacher
      */
-    String phoneNumber = null;
+    public String phoneNumber = null;
 }

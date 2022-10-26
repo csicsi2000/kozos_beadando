@@ -25,19 +25,19 @@ public class Teacher implements ITeacher, Parcelable {
     /**
      * Name of the teacher
      */
-    String name;
+    public String name;
     /**
      * Image of the teacher
      */
-    Bitmap image;
+    public Bitmap image;
     /**
      * The subjects hat the teacher can teach
      */
-    List<Subject> subjects;
+    public List<Subject> subjects;
     /**
      * The email address of the teacher
      */
-    String email;
+    public String email;
     /**
      * Phone number of the teacher
      */
