@@ -68,9 +68,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
     }
 
     @Override
-    public String getPasswordFromEmail(String email) {
+    public ITeacher getPasswordFromEmail(String email, String password) {
         return null;
     }
-
-
 }
