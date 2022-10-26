@@ -47,8 +47,9 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
     public ITeacher getPasswordFromEmail(String email, String password) {
         return new Teacher(1,
                 "Második Márk",
-                BitmapFactory.decodeResource(_context.getResources(),
-                        R.drawable.missing),
+                        null, //null added instead of image
+//                BitmapFactory.decodeResource(_context.getResources(),
+//                        R.drawable.missing),
                 new ArrayList<Subject>(){
                     {
                         add(new Subject("Matematika",3000));

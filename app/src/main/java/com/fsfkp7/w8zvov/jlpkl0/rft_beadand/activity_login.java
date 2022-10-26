@@ -2,6 +2,8 @@ package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,15 +13,18 @@ import android.widget.Toast;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
+
+import java.util.ArrayList;
 
 public class activity_login extends AppCompatActivity {
 
     EditText email;
     EditText password;
     Button button;
-    Teacher teacher;
+    ITeacher teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,10 @@ public class activity_login extends AppCompatActivity {
                     Toast.makeText(activity_login.this, "Email address is not valid", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    teacher = (Teacher) getTeacherIfExist(email.getText().toString(), password.getText().toString());
+                    teacher = getTeacherIfExist(email.getText().toString(), password.getText().toString());
+                    Intent intent = new Intent(activity_login.this, activity_profile.class);
+                    intent.putExtra("Teacher", teacher);
+                    startActivity(intent);
                 }
             }
         });
