@@ -1,10 +1,11 @@
 package com.fsfkp7.w8zvov.jlpkl0.interfaces.data;
 
 import android.graphics.Bitmap;
+import android.os.Parcelable;
 
 import java.util.List;
 
-public interface ITeacher {
+public interface ITeacher extends Parcelable {
     /**
      * Id of the teacher in the databse
      */
