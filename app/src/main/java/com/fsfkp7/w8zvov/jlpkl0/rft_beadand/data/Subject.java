@@ -1,6 +1,8 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data;
 
-public class Subject {
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
+
+public class Subject implements ISubject {
     /**
      * name of the subject
      */
