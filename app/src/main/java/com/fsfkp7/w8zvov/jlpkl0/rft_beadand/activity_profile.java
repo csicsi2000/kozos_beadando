@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,13 +20,20 @@ public class activity_profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Intent intent2 = getIntent();
-        Teacher teacher = (Teacher) getIntent().getParcelableExtra("Teacher");
+        /**
+         * Display the details of the logged in teacher
+         */
+        Teacher teacher = StaticTeacher.getMyTeacher();
+
+        String subject = teacher.subjects.get(0).getName();
+
+        ImageView imgview = (ImageView)findViewById(R.id.imageProfile);
+        imgview.setImageBitmap(teacher.image);
 
         TextView nameTextView = (TextView) findViewById(R.id.textView_name);
         nameTextView.setText(teacher.name);
 
         TextView emailTextView = (TextView) findViewById(R.id.textView_email);
-        emailTextView.setText(teacher.email);
+        emailTextView.setText(subject);
     }
 }

@@ -7,6 +7,9 @@ public class Subject extends ISubject {
      * name of the subject
      */
     String name;
+    public String getName(){
+        return name;
+    }
     /**
      * price per hour
      */
