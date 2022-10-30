@@ -8,8 +8,9 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 
 import java.util.List;
 
-public class Teacher implements ITeacher, Parcelable {
+public class Teacher extends ITeacher implements Parcelable {
     public Teacher(int id, String name, Bitmap image, List<Subject> subjects,String email, String phoneNumber) {
+        super();
         this.id = id;
         this.name = name;
         this.image = image;
