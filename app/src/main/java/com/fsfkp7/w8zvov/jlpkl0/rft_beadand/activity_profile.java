@@ -1,16 +1,10 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
 
 public class activity_profile extends AppCompatActivity {
@@ -20,20 +14,24 @@ public class activity_profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
         /**
          * Display the details of the logged in teacher
          */
         Teacher teacher = StaticTeacher.getMyTeacher();
 
-        String subject = teacher.subjects.get(0).getName();
+        ImageView profile = findViewById(R.id.ImageView_Profile);
+        profile.setImageBitmap(teacher.image);
 
-        ImageView imgview = (ImageView)findViewById(R.id.imageProfile);
-        imgview.setImageBitmap(teacher.image);
+        EditText name = findViewById(R.id.EditText_Name);
+        name.setText(teacher.name);
 
-        TextView nameTextView = (TextView) findViewById(R.id.textView_name);
-        nameTextView.setText(teacher.name);
+        EditText email = findViewById(R.id.EditText_Email);
+        email.setText(teacher.email);
 
-        TextView emailTextView = (TextView) findViewById(R.id.textView_email);
-        emailTextView.setText(subject);
+        EditText phone =findViewById(R.id.EditText_Phone);
+        phone.setText(teacher.phoneNumber);
+
+
     }
 }

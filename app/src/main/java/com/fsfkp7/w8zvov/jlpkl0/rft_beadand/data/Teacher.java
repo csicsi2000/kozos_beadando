@@ -42,7 +42,7 @@ public class Teacher extends ITeacher implements Parcelable {
     /**
      * Phone number of the teacher
      */
-    String phoneNumber;
+    public String phoneNumber;
 
     protected Teacher(Parcel in) {
         id = in.readInt();

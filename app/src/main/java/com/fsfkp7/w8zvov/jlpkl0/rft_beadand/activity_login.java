@@ -49,6 +49,7 @@ public class activity_login extends AppCompatActivity {
                     StaticTeacher.setMyTeacher(teacher);
                     Intent intent = new Intent(activity_login.this, activity_profile.class);
                     startActivity(intent);
+                    finish();
 
                 }
             }
