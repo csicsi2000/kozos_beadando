@@ -22,11 +22,7 @@ public abstract class ITeacher implements Parcelable {
     /**
      * The subjects hat the teacher can teach
      */
-    public List<String> subjects;
-    /**
-     * The price of the lesson per hour
-     */
-    public int pricePerHour;
+    public List<ISubject> subjects;
     /**
      * The email address of the teacher
      */
@@ -35,4 +31,9 @@ public abstract class ITeacher implements Parcelable {
      * Phone number of the teacher
      */
     public String phoneNumber;
+
+    /**
+     * Password of the User
+     */
+    public String password;
 }

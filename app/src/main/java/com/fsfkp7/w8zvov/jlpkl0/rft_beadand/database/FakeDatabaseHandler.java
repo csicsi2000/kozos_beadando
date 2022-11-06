@@ -56,7 +56,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                     }
                 },
                 "MM99@gmail.com",
-                "+36703476323");
+                "+36703476323",
+                "");
     }
 
     private void InitFakeDatabase(){
@@ -75,7 +76,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                     }
                 },
                 "elsoEndre99@gmail.com",
-                "+36203454323"
+                "+36203454323",
+                ""
         ));
         teachers.add(new Teacher(
                 1,
@@ -88,7 +90,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                     }
                 },
                 "MM99@gmail.com",
-                "+36703476323"
+                "+36703476323",
+                ""
         ));
         teachers.add(new Teacher(
                 2,
@@ -103,7 +106,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                     }
                 },
                 "elsoEndre99@gmail.com",
-                "+36203454323"
+                "+36203454323",
+                ""
         ));
         teachers.add(new Teacher(
                 3,
@@ -118,7 +122,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                     }
                 },
                 "kettesEndre99@gmail.com",
-                "+36203454323"
+                "+36203454323",
+                ""
         ));
         teachers.add(new Teacher(
                 4,
@@ -133,7 +138,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                     }
                 },
                 "elsoEndre99@gmail.com",
-                "+36203454323"
+                "+36203454323",
+                ""
         ));
     }
 }
