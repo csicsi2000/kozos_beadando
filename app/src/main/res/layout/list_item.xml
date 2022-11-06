@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_shadow_end_color"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="3"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <EditText
+            android:id="@+id/Subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:enabled="false"
+            android:hint="Subject"
+            android:inputType="textNoSuggestions"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/Subject"
+            android:backgroundTint="@android:color/transparent"
+            android:enabled="false"
+            android:hint="Price"
+            android:inputType="textNoSuggestions"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Currency"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_alignTop="@id/Price"
+            android:layout_alignBottom="@id/Price"
+            android:layout_marginStart="28dp"
+            android:layout_toEndOf="@+id/Price"
+            android:backgroundTint="@android:color/transparent"
+            android:gravity="center"
+            android:text="Huf/Hour"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
