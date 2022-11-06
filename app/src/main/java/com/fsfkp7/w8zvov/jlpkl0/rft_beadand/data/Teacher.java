@@ -6,8 +6,8 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 
 import java.util.List;
 
-public class Teacher extends ITeacher{
-    public Teacher(int id, String name, Bitmap image, List<Subject> subjects,String email, String phoneNumber) {
+public class Teacher extends ITeacher implements Parcelable {
+    public Teacher(int id, String name, Bitmap image, List<Subject> subjects,String email, String phoneNumber, String password) {
         super();
         this.id = id;
         this.name = name;
@@ -15,6 +15,7 @@ public class Teacher extends ITeacher{
         this.subjects = subjects;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     /**

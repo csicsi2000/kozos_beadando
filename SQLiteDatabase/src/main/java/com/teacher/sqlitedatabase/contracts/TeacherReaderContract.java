@@ -12,22 +12,22 @@ public final class TeacherReaderContract {
     public static class TeacherEntry implements BaseColumns {
         public static final String TABLE_NAME = "teachers";
         public static final String NAME = "name";
-        public static final String PRICE = "price_per_hour";
         public static final String IMAGE = "image";
         public static final String EMAIL = "email";
         public static final String PHONE = "phone_number";
-        public static final String SUBJECTS = "subjects";
+        public static final String PASSWORD = "password";
+
     }
 
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TeacherEntry.TABLE_NAME + " (" +
                     TeacherEntry._ID + " INTEGER PRIMARY KEY," +
                     TeacherEntry.NAME + " TEXT," +
-                    TeacherEntry.PRICE + " INTEGER," +
                     TeacherEntry.IMAGE + " BLOB," +
                     TeacherEntry.EMAIL + " TEXT," +
                     TeacherEntry.PHONE + " TEXT," +
-                    TeacherEntry.SUBJECTS + " TEXT)"
+                    TeacherEntry.PASSWORD + " TEXT,"
+
             ;
 
     public static final String SQL_DELETE_ENTRIES =
