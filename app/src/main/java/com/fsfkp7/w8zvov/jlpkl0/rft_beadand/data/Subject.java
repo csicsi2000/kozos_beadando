@@ -14,6 +14,7 @@ public class Subject extends ISubject {
      * price per hour
      */
     int price;
+    public int getPrice(){return price;}
 
     public Subject(String name, int price) {
         this.name = name;

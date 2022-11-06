@@ -52,6 +52,8 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                 new ArrayList<Subject>(){
                     {
                         add(new Subject("Matematika",3000));
+                        add(new Subject("Magyar",13000));
+                        add(new Subject("Informatika",30000));
                     }
                 },
                 "MM99@gmail.com",
