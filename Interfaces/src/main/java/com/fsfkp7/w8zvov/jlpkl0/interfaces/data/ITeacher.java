@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-public abstract class ITeacher implements Parcelable {
+public abstract class ITeacher {
     /**
      * Id of the teacher in the databse
      */
