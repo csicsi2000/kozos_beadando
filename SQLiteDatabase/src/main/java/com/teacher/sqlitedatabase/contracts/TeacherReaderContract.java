@@ -26,7 +26,7 @@ public final class TeacherReaderContract {
                     TeacherEntry.IMAGE + " BLOB," +
                     TeacherEntry.EMAIL + " TEXT," +
                     TeacherEntry.PHONE + " TEXT," +
-                    TeacherEntry.PASSWORD + " TEXT,"
+                    TeacherEntry.PASSWORD + " TEXT)"
 
             ;
 

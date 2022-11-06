@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
@@ -12,10 +13,12 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.teacher.sqlitedatabase.contracts.SubjectReaderContract;
 import com.teacher.sqlitedatabase.contracts.TeacherReaderContract;
+import com.teacher.sqlitedatabase.data.SQLTeacher;
 import com.teacher.sqlitedatabase.databasehelpers.SubjectReaderDBHelper;
 import com.teacher.sqlitedatabase.databasehelpers.TeacherReaderDBHelper;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +36,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        teacher.image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArrayOfImage = stream.toByteArray();
+       // teacher.image.compress(Bitmap.CompressFormat.PNG, 100, stream);
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(TeacherReaderContract.TeacherEntry.NAME, teacher.name);
@@ -66,10 +68,17 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
     }
 
     private byte[] BitmapToByte(Bitmap pics){
+        if(pics == null){
+            return null;
+        }
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         pics.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArrayOfImage = stream.toByteArray();
         return byteArrayOfImage;
+    }
+
+    private Bitmap ByteToBitmap(byte[] bytes){
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 
     @Override
@@ -79,7 +88,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
 
     @Override
     public List<ITeacher> getAllTeachers() {
-        SubjectReaderDBHelper dbHelper = new SubjectReaderDBHelper(_context);
+        TeacherReaderDBHelper dbHelper = new TeacherReaderDBHelper(_context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
                 TeacherReaderContract.TeacherEntry._ID,
@@ -98,7 +107,25 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
                 null,                   // don't filter by row groups
                 null              // The sort order
         );
+
+        ArrayList<ITeacher> teachers = new ArrayList<ITeacher>();
+        while(cursor.moveToNext()) {
+            long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry._ID));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.NAME));
+            Bitmap image= ByteToBitmap(cursor.getBlob(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.IMAGE)));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.EMAIL));
+            String phone = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.PHONE));
+
+            ArrayList<ISubject> subjects = getAllSubjects(itemId);
+            teachers.add(new SQLTeacher(Math.toIntExact(itemId),name,image,subjects,email,phone));
+        }
+        cursor.close();
+
         return null;
+    }
+
+    private ArrayList<ISubject> getAllSubjects(long teacheId){
+return null;
     }
 
     @Override
