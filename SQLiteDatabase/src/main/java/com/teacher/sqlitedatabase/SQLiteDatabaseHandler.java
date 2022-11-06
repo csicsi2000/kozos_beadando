@@ -84,7 +84,6 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         String[] projection = {
                 TeacherReaderContract.TeacherEntry._ID,
                 TeacherReaderContract.TeacherEntry.NAME,
-                TeacherReaderContract.TeacherEntry.PRICE,
                 TeacherReaderContract.TeacherEntry.IMAGE,
                 TeacherReaderContract.TeacherEntry.EMAIL,
                 TeacherReaderContract.TeacherEntry.PHONE
