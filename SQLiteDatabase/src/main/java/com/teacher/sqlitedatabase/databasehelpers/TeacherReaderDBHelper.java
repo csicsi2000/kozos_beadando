@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.teacher.sqlitedatabase.contracts.SubjectReaderContract;
 import com.teacher.sqlitedatabase.contracts.TeacherReaderContract;
 
 public class TeacherReaderDBHelper extends SQLiteOpenHelper {
@@ -32,5 +33,9 @@ public class TeacherReaderDBHelper extends SQLiteOpenHelper {
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    public void deleteDB(SQLiteDatabase db){
+        db.execSQL(TeacherReaderContract.SQL_DELETE_ENTRIES);
     }
 }

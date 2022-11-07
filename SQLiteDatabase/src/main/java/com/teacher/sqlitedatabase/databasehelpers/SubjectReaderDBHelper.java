@@ -33,4 +33,8 @@ public class SubjectReaderDBHelper extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
+
+    public void deleteDB(SQLiteDatabase db){
+        db.execSQL(SubjectReaderContract.SQL_DELETE_ENTRIES);
+    }
 }
