@@ -49,7 +49,7 @@ public class SQLiteDatabaseHandlerTests {
     }
 
     @Test
-    public void TC01_GetAllData_AllDataReturned(){
+    public void TC01_GetAllData_CorrectCall_AllDataReturned(){
         // arrange
         IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
         dbHandler.addOrEditTeacher(
@@ -67,7 +67,7 @@ public class SQLiteDatabaseHandlerTests {
     }
 
     @Test
-    public void TC02_addTeacher_dataAdded(){
+    public void TC02_addTeacher_dataAdded_newDataFoundOnRead(){
         // arrange
         IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
         ClassLoader loader = testContext.getClassLoader();
@@ -93,7 +93,7 @@ public class SQLiteDatabaseHandlerTests {
     }
 
     @Test
-    public void TC03_editTeacher_dataEdited(){
+    public void TC03_editTeacher_dataEdited_newDataCorrect(){
         // arrange
         IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
         ITeacher teacher = new SQLTeacher(
@@ -132,7 +132,7 @@ public class SQLiteDatabaseHandlerTests {
     }
 
     @Test
-    public void TC04_addTeacherAndEditSubject_subjectEdited(){
+    public void TC04_addTeacherAndEditSubject_subjectEdited_NewContentCorrect(){
         // arrange
         IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
         ArrayList<ISubject> subjectsArray = new ArrayList<ISubject>();
@@ -175,5 +175,53 @@ public class SQLiteDatabaseHandlerTests {
         Assert.assertEquals(1,replaceFirstSubject.teacherId);
         Assert.assertEquals("Informatika",replaceFirstSubject.name);
         Assert.assertEquals(3000,replaceFirstSubject.price);
+    }
+    @Test
+    public void TC05_getTeacherFromPasswordAndEmail_CorrectLoginInfo_TeacherReturned(){
+        // arrange
+        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
+        ArrayList<ISubject> subjectsArray = new ArrayList<ISubject>();
+        subjectsArray.add(new SQLSubject(-1,-1,"Matek",3000));
+        subjectsArray.add(new SQLSubject(-1,-1,"Történelem",2000));
+        ITeacher teacher = new SQLTeacher(
+                -1,
+                "test tamás",
+                null,
+                subjectsArray,
+                "test@gmg.com",
+                "+36278321");
+        teacher.password = "abcde";
+        // act
+        boolean success = dbHandler.addOrEditTeacher(teacher);
+        ITeacher foundTeacher = dbHandler.getPasswordFromEmail("test@gmg.com","abcde");
+
+        // assert
+        Assert.assertEquals(1,foundTeacher.id);
+        Assert.assertEquals("test tamás",foundTeacher.name);
+        Assert.assertEquals("test@gmg.com",foundTeacher.email);
+        Assert.assertEquals("+36278321",foundTeacher.phoneNumber);
+    }
+
+    @Test
+    public void TC06_getTeacherFromPasswordAndEmail_InvalidLoginInfo_NoTeacherReturned(){
+        // arrange
+        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
+        ArrayList<ISubject> subjectsArray = new ArrayList<ISubject>();
+        subjectsArray.add(new SQLSubject(-1,-1,"Matek",3000));
+        subjectsArray.add(new SQLSubject(-1,-1,"Történelem",2000));
+        ITeacher teacher = new SQLTeacher(
+                -1,
+                "test tamás",
+                null,
+                subjectsArray,
+                "test@gmg.com",
+                "+36278321");
+        teacher.password = "abcde";
+        // act
+        boolean success = dbHandler.addOrEditTeacher(teacher);
+        ITeacher foundTeacher = dbHandler.getPasswordFromEmail("test@gmg.com","abc4de");
+
+        // assert
+        Assert.assertNull(foundTeacher);
     }
 }

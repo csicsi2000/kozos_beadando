@@ -41,6 +41,8 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         values.put(TeacherReaderContract.TeacherEntry.IMAGE, BitmapToByte(teacher.image));
         values.put(TeacherReaderContract.TeacherEntry.EMAIL,teacher.email);
         values.put(TeacherReaderContract.TeacherEntry.PHONE, teacher.phoneNumber);
+        values.put(TeacherReaderContract.TeacherEntry.PASSWORD, SupportLogic.GetHashedPassword(teacher.password));
+
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         if(teacher.id < 0) {
@@ -55,6 +57,9 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
                     null);
         }
 
+        if(newRowId==-1){
+            return false;
+        }
         if(!insertSubjects(newRowId,teacher.subjects)) {
             return false;
         };
@@ -110,6 +115,10 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
 
     @Override
     public List<ITeacher> getAllTeachers() {
+        return getAllTeachersWithWhere("");
+    }
+
+    public List<ITeacher> getAllTeachersWithWhere(String whereText){
         TeacherReaderDBHelper dbHelper = new TeacherReaderDBHelper(_context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] projection = {
@@ -123,7 +132,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         Cursor cursor = db.query(
                 TeacherReaderContract.TeacherEntry.TABLE_NAME,   // The table to query
                 projection,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
+                whereText,              // The columns for the WHERE clause
                 null,          // The values for the WHERE clause
                 null,                   // don't group the rows
                 null,                   // don't filter by row groups
@@ -190,6 +199,16 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
 
     @Override
     public ITeacher getPasswordFromEmail(String email, String password) {
+        List<ITeacher> teachers =  getAllTeachersWithWhere(
+                TeacherReaderContract.TeacherEntry.EMAIL+"='"+email+"' AND "+
+                        TeacherReaderContract.TeacherEntry.PASSWORD+"='"+SupportLogic.GetHashedPassword(password)+"'");
+        if(teachers.size()>1){
+            Log.d("Database", "getPasswordFromEmail: Valami itt nagyon félrement, két ugyanolyan felhasználó ugyanolyan email- és jelszóval nem lehet");
+        }
+        else if(teachers.size() == 1){
+            return teachers.get(0);
+        }
+
         return null;
     }
 }
