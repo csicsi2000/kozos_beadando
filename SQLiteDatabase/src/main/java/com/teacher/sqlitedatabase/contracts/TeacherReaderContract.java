@@ -20,13 +20,13 @@ public final class TeacherReaderContract {
     }
 
     public static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + TeacherEntry.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + TeacherEntry.TABLE_NAME + " (" +
                     TeacherEntry._ID + " INTEGER PRIMARY KEY," +
                     TeacherEntry.NAME + " TEXT," +
                     TeacherEntry.IMAGE + " BLOB," +
                     TeacherEntry.EMAIL + " TEXT," +
                     TeacherEntry.PHONE + " TEXT," +
-                    TeacherEntry.PASSWORD + " TEXT,"
+                    TeacherEntry.PASSWORD + " TEXT)"
 
             ;
 

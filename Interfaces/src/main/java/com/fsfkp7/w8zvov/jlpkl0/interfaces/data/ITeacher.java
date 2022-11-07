@@ -10,7 +10,7 @@ public abstract class ITeacher {
     /**
      * Id of the teacher in the databse
      */
-    public int id;
+    public int id = -1;
     /**
      * Name of the teacher
      */

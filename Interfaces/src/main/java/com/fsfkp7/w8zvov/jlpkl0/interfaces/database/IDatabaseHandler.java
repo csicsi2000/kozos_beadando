@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IDatabaseHandler {
     /**
-     * If Id >= 0 then edit the teacher based on ID
-     * If Id >= -1 or null, then add new Teacher
+     * If Id > 0 then edit the teacher based on ID
+     * If Id = -1 or null, then add new Teacher
      * @param teacher
      * @return
      */
