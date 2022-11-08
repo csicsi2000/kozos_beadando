@@ -6,7 +6,9 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 
 import java.util.List;
 
-public class Teacher extends ITeacher{
+
+public class Teacher extends ITeacher  {
+
     public Teacher(int id, String name, Bitmap image, List<Subject> subjects,String email, String phoneNumber, String password) {
         super();
         this.id = id;

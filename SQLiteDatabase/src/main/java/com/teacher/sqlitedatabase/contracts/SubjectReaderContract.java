@@ -14,7 +14,7 @@ public class SubjectReaderContract {
     }
 
     public static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + SubjectsEntry.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + SubjectsEntry.TABLE_NAME + " (" +
                     SubjectsEntry._ID + " INTEGER PRIMARY KEY," +
                     SubjectsEntry.TEACHER_ID + " INTEGER," +
                     SubjectsEntry.NAME + " TEXT," +
