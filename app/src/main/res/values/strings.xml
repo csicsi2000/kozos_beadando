@@ -14,4 +14,5 @@
     <string name="password">Password</string>
     <string name="email_address">Email address</string>
     <string name="button_signIn_text">Sign in</string>
+    <string name="update">Update</string>
 </resources>
