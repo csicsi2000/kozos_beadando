@@ -19,6 +19,7 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
+import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
 import org.w3c.dom.Text;
 
@@ -106,7 +107,7 @@ public class activity_login extends AppCompatActivity {
      * @return teacher
      */
     public ITeacher getTeacherIfExist(String email, String password){
-        IDatabaseHandler dbHandler = new FakeDatabaseHandler(getBaseContext());
+        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(getBaseContext());
         ITeacher teacher = dbHandler.getPasswordFromEmail(email, password);
         if (teacher != null){
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
