@@ -97,6 +97,38 @@
         android:weightSum="3">
 
         <TextView
+            android:id="@+id/registration_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Password:"
+            android:textColor="#80000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/registration_password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:inputType="textPassword"
+            android:textColor="#80000000"
+            android:hint="something@something.com"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:weightSum="3">
+
+        <TextView
             android:id="@+id/registration_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,10 +150,11 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center"
         android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
@@ -129,27 +162,72 @@
         android:background="@color/cardview_shadow_end_color"
         android:weightSum="3">
 
-        <TextView
-            android:id="@+id/registration_subject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Subject:"
-            android:textColor="#80000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/registration_subject_input"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="fill_horizontal"
-            android:inputType="phone"
-            android:textColor="#80000000"
-            android:hint="+36000000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/cardview_shadow_end_color"
+            android:weightSum="3">
 
+            <TextView
+                android:id="@+id/registration_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Subject:"
+                android:textColor="#80000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/registration_subject_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill_horizontal"
+                android:inputType="text"
+                android:textColor="#80000000"
+                android:hint="+36000000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/cardview_shadow_end_color"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/registration_subject_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Price/hour:"
+                android:textColor="#80000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/registration_subject_price_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill_horizontal"
+                android:inputType="number"
+                android:textColor="#80000000"
+                android:hint="+36000000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,94 +239,13 @@
         android:layout_marginLeft="15dp"
         android:background="@color/cardview_shadow_end_color"
         android:weightSum="3">
-
-        <TextView
-            android:id="@+id/registration_subject5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Subject:"
-            android:textColor="#80000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/registration_subject_input5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="fill_horizontal"
-            android:inputType="phone"
-            android:textColor="#80000000"
-            android:hint="+36000000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
+            <Button
+                android:id="@+id/button_signIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Register"
+                tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:background="@color/cardview_shadow_end_color"
-        android:weightSum="3">
-
-        <TextView
-            android:id="@+id/registration_subject3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Subject:"
-            android:textColor="#80000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/registration_subject_input3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="fill_horizontal"
-            android:inputType="phone"
-            android:textColor="#80000000"
-            android:hint="+36000000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:background="@color/cardview_shadow_end_color"
-        android:weightSum="3">
-
-        <TextView
-            android:id="@+id/registration_subject2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Subject:"
-            android:textColor="#80000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/registration_subject_input2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="fill_horizontal"
-            android:inputType="phone"
-            android:textColor="#80000000"
-            android:hint="+36000000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
 </LinearLayout>
