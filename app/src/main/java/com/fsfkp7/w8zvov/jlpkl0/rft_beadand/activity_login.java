@@ -54,11 +54,11 @@ public class activity_login extends AppCompatActivity {
                 }
                 else{
                     teacher = (Teacher) getTeacherIfExist(email.getText().toString(), password.getText().toString());
+                    // ha null a teacher akkor ne settelje meg ne menjen a másik activityre
                     StaticTeacher.setMyTeacher(teacher);
                     Intent intent = new Intent(activity_login.this, activity_profile.class);
                     startActivity(intent);
                     finish();
-
                 }
             }
         });

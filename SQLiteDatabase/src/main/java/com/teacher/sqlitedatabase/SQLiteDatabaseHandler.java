@@ -35,7 +35,19 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
     }
 
     // todo remove this
-    void initFakeData(){
+    public void initFakeData(){
+        List<ITeacher>  t = getAllTeachers();
+        if(t.size() != 0){
+            SubjectReaderDBHelper sHelper = new SubjectReaderDBHelper(_context);
+            SQLiteDatabase sdb = sHelper.getWritableDatabase();
+            sHelper.deleteDB(sdb);
+            sHelper.onCreate(sdb);
+
+            TeacherReaderDBHelper tHelper = new TeacherReaderDBHelper(_context);
+            SQLiteDatabase tdb = tHelper.getWritableDatabase();
+            tHelper.deleteDB(tdb);
+            tHelper.onCreate(tdb);
+        }
         ITeacher teach =new SQLTeacher(
                 -1,
                 "Első Endre",
