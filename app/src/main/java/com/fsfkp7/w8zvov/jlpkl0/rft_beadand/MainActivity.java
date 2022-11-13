@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<ITeacher> teacherlist;
 
-   IDatabaseHandler databaseHandler= new SQLiteDatabaseHandler()
+  // IDatabaseHandler databaseHandler= new SQLiteDatabaseHandler()
 
 
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        teacherlist = databaseHandler.getAllTeachers();
+      //  teacherlist = databaseHandler.getAllTeachers();
 
 
 
