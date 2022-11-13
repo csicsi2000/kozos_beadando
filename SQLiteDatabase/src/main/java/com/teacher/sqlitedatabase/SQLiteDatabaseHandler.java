@@ -36,7 +36,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
 
     // todo remove this
     void initFakeData(){
-        addOrEditTeacher(new SQLTeacher(
+        ITeacher tc = new SQLTeacher(
                 0,
                 "Első Endre",
                 null,
@@ -48,7 +48,9 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
                 },
                 "elsoEndre99@gmail.com",
                 "+36203454323"
-        ));
+        );
+        tc.password = "12345";
+        addOrEditTeacher(tc);
         addOrEditTeacher(new SQLTeacher(
                 1,
                 "Második Márk",
