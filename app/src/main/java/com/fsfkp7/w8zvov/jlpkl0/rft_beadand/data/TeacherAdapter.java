@@ -10,16 +10,18 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TeacherAdapter extends ArrayAdapter<Teacher> {
-    private ArrayList<Teacher> teachers;
+    private List<ITeacher> teachers;
 
 
-    public TeacherAdapter(@NonNull Context context, int resource, ArrayList<Teacher> teachers) {
-        super(context, resource, teachers);
+    public TeacherAdapter(@NonNull Context context, int resource, List<ITeacher> teachers) {
+        super(context, resource);
         this.teachers = teachers;
     }
 

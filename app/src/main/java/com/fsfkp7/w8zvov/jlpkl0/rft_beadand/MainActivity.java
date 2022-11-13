@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.SubjectAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
@@ -28,8 +30,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
+import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
     Teacher teacher;
     EditText teachername;
 
-    ArrayList<Teacher> teacherlist;
+    List<ITeacher> teacherlist;
 
-   // FakeDatabaseHandler fakeDatabaseHandler=new FakeDatabaseHandler();
+   IDatabaseHandler databaseHandler= new SQLiteDatabaseHandler()
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +67,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ListView listview=new ListView(this);
-        teacherlist = new ArrayList<>();
 
-        // teachers = fakeDatabaseHandler.getAllTeachers();
+
+        teacherlist = databaseHandler.getAllTeachers();
 
 
 
