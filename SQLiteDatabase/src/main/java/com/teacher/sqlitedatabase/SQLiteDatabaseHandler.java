@@ -23,12 +23,44 @@ import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.Subject;
+
 public class SQLiteDatabaseHandler implements IDatabaseHandler {
     private Context _context;
     private static final String separator = ";";
 
     public SQLiteDatabaseHandler(Context context){
         _context = context;
+        initFakeData();
+    }
+
+    // todo remove this
+    void initFakeData(){
+        addOrEditTeacher(new SQLTeacher(
+                0,
+                "Első Endre",
+                null,
+                new ArrayList<ISubject>(){
+                    {
+                        add(new SQLSubject(-1,0,"Matematika",2000));
+                        add(new SQLSubject(-1,0,"Magyar",13000));
+                    }
+                },
+                "elsoEndre99@gmail.com",
+                "+36203454323"
+        ));
+        addOrEditTeacher(new SQLTeacher(
+                1,
+                "Második Márk",
+                null,
+                new ArrayList<ISubject>(){
+                    {
+                        add(new SQLSubject(-1,0,"Matematika",3000));
+                    }
+                },
+                "MM99@gmail.com",
+                "+36703476323"
+        ));
     }
 
     @Override

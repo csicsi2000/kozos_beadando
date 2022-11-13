@@ -23,6 +23,7 @@ public class subjectsLogic {
 
         for (ISubject subject:subjects) {
             ContentValues values = new ContentValues();
+            values.put(SubjectReaderContract.SubjectsEntry.TEACHER_ID, teacherId);
             values.put(SubjectReaderContract.SubjectsEntry.NAME, subject.name);
             values.put(SubjectReaderContract.SubjectsEntry.PRICE, subject.price);
             long newRowId = db.insert(TeacherReaderContract.TeacherEntry.TABLE_NAME, null, values);
