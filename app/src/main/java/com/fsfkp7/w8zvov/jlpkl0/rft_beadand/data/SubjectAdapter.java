@@ -23,6 +23,16 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
         this.subjects = subjects;
     }
 
+    @Override
+    public int getCount() {
+        return subjects.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

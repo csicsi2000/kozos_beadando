@@ -1,21 +1,26 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -25,6 +30,7 @@ public class activity_login extends AppCompatActivity {
     EditText password;
     Button button;
     Teacher teacher;
+    TextView registration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,7 @@ public class activity_login extends AppCompatActivity {
         password = findViewById(R.id.editText_password);
         email = findViewById(R.id.editText_email);
         button = findViewById(R.id.button_signIn);
+        registration = findViewById(R.id.textView_registration);
 
         /**
          *onclick listener for the button_signIn
@@ -52,6 +59,22 @@ public class activity_login extends AppCompatActivity {
                     finish();
 
                 }
+            }
+        });
+
+        //Hiding the registration fragment
+        RegistrationFragment rf = new RegistrationFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        rf = (RegistrationFragment) fragmentManager.findFragmentById(R.id.registration_fragnent);
+        RegistrationFragment finalRf = rf;
+        showHideFragment(finalRf);
+
+
+        registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showHideFragment(finalRf);
             }
         });
     }
@@ -93,5 +116,24 @@ public class activity_login extends AppCompatActivity {
             return  null;
         }
     }
+
+    public void showHideFragment(final Fragment fragment){
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+
+        if (fragment.isHidden()) {
+            ft.show(fragment);
+            Log.d("hidden","Showwww");
+        } else {
+            ft.hide(fragment);
+            Log.d("Shown","Hideeeee");
+        }
+
+        ft.commit();
+    }
 }
+
 
