@@ -31,11 +31,23 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
 
     public SQLiteDatabaseHandler(Context context){
         _context = context;
+        // todo remove this in production
         initFakeData();
+        // todo
     }
 
     // todo remove this
     void initFakeData(){
+        SubjectReaderDBHelper sHelper = new SubjectReaderDBHelper(_context);
+        SQLiteDatabase sdb = sHelper.getWritableDatabase();
+        sHelper.deleteDB(sdb);
+        sHelper.onCreate(sdb);
+
+        TeacherReaderDBHelper tHelper = new TeacherReaderDBHelper(_context);
+        SQLiteDatabase tdb = tHelper.getWritableDatabase();
+        tHelper.deleteDB(tdb);
+        tHelper.onCreate(tdb);
+
         ITeacher teach =new SQLTeacher(
                 -1,
                 "Első Endre",
