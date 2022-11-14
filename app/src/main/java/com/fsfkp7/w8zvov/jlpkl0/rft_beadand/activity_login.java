@@ -54,11 +54,14 @@ public class activity_login extends AppCompatActivity {
                 }
                 else{
                     teacher = (Teacher) getTeacherIfExist(email.getText().toString(), password.getText().toString());
-                    StaticTeacher.setMyTeacher(teacher);
-                    Intent intent = new Intent(activity_login.this, activity_profile.class);
-                    startActivity(intent);
-                    finish();
-
+                    if (teacher == null)
+                        Toast.makeText(activity_login.this, "Login failed", Toast.LENGTH_SHORT).show();
+                    else{
+                        StaticTeacher.setMyTeacher(teacher);
+                        Intent intent = new Intent(activity_login.this, activity_profile.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
         });
@@ -107,7 +110,7 @@ public class activity_login extends AppCompatActivity {
      * @return teacher
      */
     public ITeacher getTeacherIfExist(String email, String password){
-        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(getBaseContext());
+        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(getApplicationContext());
         ITeacher teacher = dbHandler.getPasswordFromEmail(email, password);
         if (teacher != null){
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
@@ -127,10 +130,10 @@ public class activity_login extends AppCompatActivity {
 
         if (fragment.isHidden()) {
             ft.show(fragment);
-            Log.d("hidden","Showwww");
+            Log.d("hidden","Show");
         } else {
             ft.hide(fragment);
-            Log.d("Shown","Hideeeee");
+            Log.d("Shown","Hide");
         }
 
         ft.commit();
