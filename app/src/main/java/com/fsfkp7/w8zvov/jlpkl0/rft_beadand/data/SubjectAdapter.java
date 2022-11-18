@@ -10,15 +10,16 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.R;
 
 import java.util.ArrayList;
 
-public class SubjectAdapter extends ArrayAdapter<Subject> {
-    private ArrayList<Subject> subjects;
+public class SubjectAdapter extends ArrayAdapter<ISubject> {
+    private ArrayList<ISubject> subjects;
 
 
-    public SubjectAdapter(@NonNull Context context, int resource, ArrayList<Subject> subjects) {
+    public SubjectAdapter(@NonNull Context context, int resource, ArrayList<ISubject> subjects) {
         super(context, resource, subjects);
         this.subjects = subjects;
     }
@@ -43,8 +44,8 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
         EditText editText1 = convertView.findViewById(R.id.Subject);
         EditText editText2 = convertView.findViewById(R.id.Price);
 
-        editText1.setText(subjects.get(position).getName());
-        editText2.setText(String.valueOf(subjects.get(position).getPrice()));
+        editText1.setText(subjects.get(position).name);
+        editText2.setText(String.valueOf(subjects.get(position).price));
 
         return convertView;
     }

@@ -30,7 +30,7 @@ public class activity_login extends AppCompatActivity {
     EditText email;
     EditText password;
     Button button;
-    Teacher teacher;
+    ITeacher teacher;
     TextView registration;
 
     @Override
@@ -53,7 +53,7 @@ public class activity_login extends AppCompatActivity {
                     Toast.makeText(activity_login.this, "Email address is not valid", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    teacher = (Teacher) getTeacherIfExist(email.getText().toString(), password.getText().toString());
+                    teacher = getTeacherIfExist(email.getText().toString(), password.getText().toString());
                     if (teacher == null)
                         Toast.makeText(activity_login.this, "Login failed", Toast.LENGTH_SHORT).show();
                     else{
