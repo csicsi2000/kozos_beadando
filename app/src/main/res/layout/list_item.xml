@@ -29,7 +29,7 @@
             android:id="@+id/Price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="-110dp"
             android:layout_toEndOf="@+id/Subject"
             android:backgroundTint="@android:color/transparent"
             android:hint="Price"

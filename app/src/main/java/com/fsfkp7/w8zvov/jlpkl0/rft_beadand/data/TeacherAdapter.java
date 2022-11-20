@@ -39,12 +39,12 @@ public class TeacherAdapter extends ArrayAdapter<Teacher> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if(convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.teaching_items,parent,false);
         }
 
-        EditText name = convertView.findViewById(R.id.Teacher);
-        EditText email = convertView.findViewById(R.id.Teacher);
-        EditText phoneNumber = convertView.findViewById(R.id.Teacher);
+        EditText name = convertView.findViewById(R.id.Name);
+        EditText email = convertView.findViewById(R.id.Email);
+        EditText phoneNumber = convertView.findViewById(R.id.PhoneNumber);
 
 
         name.setText(teachers.get(position).name);
