@@ -32,7 +32,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
     public SQLiteDatabaseHandler(Context context){
         _context = context;
         // todo remove this in production
-        initFakeData();
+        //initFakeData();
         // todo
     }
 
@@ -97,6 +97,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         values.put(TeacherReaderContract.TeacherEntry.PASSWORD, SupportLogic.GetHashedPassword(teacher.password));
 
         // Insert the new row, returning the primary key value of the new row
+        // TODO: duplicate teacher is not allowed
         long newRowId;
         if(teacher.id < 0) {
             newRowId = db.insert(TeacherReaderContract.TeacherEntry.TABLE_NAME, null, values);
@@ -113,7 +114,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         if(newRowId==-1){
             return false;
         }
-        if(!insertSubjects(newRowId,teacher.subjects)) {
+        if(!insertSubjects(newRowId,teacher.getSubjects())) {
             return false;
         };
         Log.d("SQLLite", "addOrEditTeacher:  " + teacher.name);
@@ -254,13 +255,18 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
     public ITeacher getPasswordFromEmail(String email, String password) {
         List<ITeacher> teachers =  getAllTeachersWithWhere(
                 TeacherReaderContract.TeacherEntry.EMAIL+"='"+email+"' AND "+
-                        TeacherReaderContract.TeacherEntry.PASSWORD+"='"+SupportLogic.GetHashedPassword(password)+"'");
+                         TeacherReaderContract.TeacherEntry.PASSWORD+"='"+SupportLogic.GetHashedPassword(password)+"'");
+        if(teachers.size()  > 0){
+            return teachers.get(0);
+        }
+// TODO :
+        /*
         if(teachers.size()>1){
             Log.d("Database", "getPasswordFromEmail: Valami itt nagyon félrement, két ugyanolyan felhasználó ugyanolyan email- és jelszóval nem lehet");
         }
         else if(teachers.size() == 1){
             return teachers.get(0);
-        }
+        }*/
 
         return null;
     }

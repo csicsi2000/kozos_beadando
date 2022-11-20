@@ -6,14 +6,12 @@ public class Subject extends ISubject {
     /**
      * name of the subject
      */
-    String name;
     public String getName(){
         return name;
     }
     /**
      * price per hour
      */
-    int price;
     public int getPrice(){return price;}
 
     public Subject(String name, int price) {
