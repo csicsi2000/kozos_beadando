@@ -69,6 +69,7 @@ public class RegistrationFragment extends Fragment {
                 Subject subject = new Subject(subject_name.getText().toString(), Integer.parseInt(price.getText().toString()));
                 List<Subject> subjects = new ArrayList<>();
                 subjects.add(subject);
+
                 ITeacher teacher = new Teacher(
                         name.getText().toString(),
                         btm,
@@ -76,7 +77,9 @@ public class RegistrationFragment extends Fragment {
                         email.getText().toString(),
                         phone.getText().toString(),
                         password.getText().toString());
-                Toast.makeText(getActivity(),subject.getName(), Toast.LENGTH_SHORT).show();
+
+
+                Toast.makeText(getActivity(),"hello", Toast.LENGTH_SHORT).show();
                 //((activity_login) getActivity()).addTeacher(teacher);
                 //dbhandler.addOrEditTeacher(teacher);
 
