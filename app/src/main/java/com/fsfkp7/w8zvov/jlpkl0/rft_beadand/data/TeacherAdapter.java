@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,12 +17,12 @@ import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherAdapter extends ArrayAdapter<Teacher> {
+public class TeacherAdapter extends ArrayAdapter<ITeacher> {
     private List<ITeacher> teachers;
 
 
     public TeacherAdapter(@NonNull Context context, int resource, List<ITeacher> teachers) {
-        super(context, resource);
+        super(context, resource, teachers);
         this.teachers = teachers;
     }
 
@@ -39,12 +40,12 @@ public class TeacherAdapter extends ArrayAdapter<Teacher> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if(convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.teaching_items,parent,false);
         }
 
-        EditText name = convertView.findViewById(R.id.Teacher);
-        EditText email = convertView.findViewById(R.id.Teacher);
-        EditText phoneNumber = convertView.findViewById(R.id.Teacher);
+        TextView name = convertView.findViewById(R.id.Name);
+        TextView email = convertView.findViewById(R.id.Email);
+        TextView phoneNumber = convertView.findViewById(R.id.PhoneNumber);
 
 
         name.setText(teachers.get(position).name);

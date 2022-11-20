@@ -1,5 +1,9 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
     List<ITeacher> teacherlist;
 
     IDatabaseHandler databaseHandler;
-
-
+    Button signIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +49,25 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        databaseHandler = new SQLiteDatabaseHandler(getApplicationContext());
 
-        teacherlist =   databaseHandler.getAllTeachers();
+        databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
+
+        signIn=(Button)findViewById(R.id.SignIn);
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,activity_login.class);
+                startActivity(intent);
+            }
+        });
+       teacherlist =   databaseHandler.getAllTeachers();
 
 
 
-        /*
-        TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.list_item, teacherlist);
-        ListView listView = findViewById(R.id.listView_teachers);
-        listView.setAdapter(adapter);*/
+
+     //   TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
+      //  ListView listView = findViewById(R.id.listView_teachers);
+        //listView.setAdapter(adapter);
 
         //setSupportActionBar(binding.appBarMain.toolbar);
         // binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
