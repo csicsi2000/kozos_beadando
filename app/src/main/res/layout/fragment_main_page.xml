@@ -81,7 +81,7 @@
             tools:src="@tools:sample/avatars" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/Name"
             android:layout_width="191dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"

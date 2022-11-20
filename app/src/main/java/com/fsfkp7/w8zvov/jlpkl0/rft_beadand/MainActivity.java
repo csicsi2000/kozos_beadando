@@ -5,7 +5,20 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.SubjectAdapter;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.TeacherAdapter;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -17,51 +30,80 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
+import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-//test
+
+
+    EditText name;
+    EditText password;
+    EditText subject;
+
+
+    Button button;
+
+
+
+    Teacher teacher;
+    EditText teachername;
+
+    List<ITeacher> teacherlist;
+
+   IDatabaseHandler databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+       teacherlist =   databaseHandler.getAllTeachers();
+
+
+
+
+        TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.list_item, teacherlist);
+        ListView listView = findViewById(R.id.listView_teachers);
+        listView.setAdapter(adapter);
+
+        //setSupportActionBar(binding.appBarMain.toolbar);
+        // binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+
+        // Teacher teacher = StaticTeacher.getMyTeacher();
+
+        //   ImageView profile = findViewById(R.id.ImageView_Profile);
+        // profile.setImageBitmap(teacher.image);
+
+        //  EditText name = findViewById(R.id.EditText_Name);
+        // name.setText(teacher.name);
+
+        //   EditText email = findViewById(R.id.EditText_Email);
+        // email.setText(teacher.email);
+
+        //   EditText phone =findViewById(R.id.EditText_Phone);
+        //  phone.setText(teacher.phoneNumber);
+
+        //subjectList = new ArrayList<>();
+
+        // teachername = findViewById(R.id.editText_teacher);
+        // button = findViewById(R.id.button_signIn);
+
+      //  for (int i = 0; i < teacher.subjects.size(); i++) {
+      //      subjectList.add(teacher.subjects.get(i));
+       // }
+
+
     }
 }
