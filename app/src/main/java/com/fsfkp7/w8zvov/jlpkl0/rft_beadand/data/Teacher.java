@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Teacher extends ITeacher  {
 
-    public Teacher(int id, String name, Bitmap image, List<Subject> subjects,String email, String phoneNumber, String password) {
+    public Teacher(String name, Bitmap image, List<Subject> subjects, String email, String phoneNumber, String password) {
         super();
         this.id = id;
         this.name = name;

@@ -31,7 +31,9 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
 
     public SQLiteDatabaseHandler(Context context){
         _context = context;
+        // todo remove this in production
         initFakeData();
+        // todo
     }
 
     // todo remove this
@@ -48,6 +50,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
             tHelper.deleteDB(tdb);
             tHelper.onCreate(tdb);
         }
+
         ITeacher teach =new SQLTeacher(
                 -1,
                 "Első Endre",
@@ -69,6 +72,8 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
                 null,
                 new ArrayList<ISubject>(){
                     {
+                        add(new SQLSubject(-1,0,"Matematika",3000));
+                        add(new SQLSubject(-1,0,"Matematika",3000));
                         add(new SQLSubject(-1,0,"Matematika",3000));
                     }
                 },
