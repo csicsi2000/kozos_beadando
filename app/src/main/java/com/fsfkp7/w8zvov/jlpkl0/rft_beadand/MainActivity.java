@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<ITeacher> teacherlist;
 
-   IDatabaseHandler databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
+    IDatabaseHandler databaseHandler;
 
 
 
@@ -66,17 +66,16 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        databaseHandler = new SQLiteDatabaseHandler(getApplicationContext());
+
+        teacherlist =   databaseHandler.getAllTeachers();
 
 
 
-       teacherlist =   databaseHandler.getAllTeachers();
-
-
-
-
+        /*
         TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.list_item, teacherlist);
         ListView listView = findViewById(R.id.listView_teachers);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
         //setSupportActionBar(binding.appBarMain.toolbar);
         // binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
