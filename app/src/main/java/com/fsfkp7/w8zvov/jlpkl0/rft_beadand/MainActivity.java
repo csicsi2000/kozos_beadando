@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
-        ListView listView = findViewById(R.id.listView_teachers);
-        listView.setAdapter(adapter);
+     //   TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
+      //  ListView listView = findViewById(R.id.listView_teachers);
+        //listView.setAdapter(adapter);
 
         //setSupportActionBar(binding.appBarMain.toolbar);
         // binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
