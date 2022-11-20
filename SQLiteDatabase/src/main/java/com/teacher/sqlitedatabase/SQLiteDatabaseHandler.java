@@ -70,6 +70,8 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
                 new ArrayList<ISubject>(){
                     {
                         add(new SQLSubject(-1,0,"Matematika",3000));
+                        add(new SQLSubject(-1,0,"Matematika",3000));
+                        add(new SQLSubject(-1,0,"Matematika",3000));
                     }
                 },
                 "MM99@gmail.com",

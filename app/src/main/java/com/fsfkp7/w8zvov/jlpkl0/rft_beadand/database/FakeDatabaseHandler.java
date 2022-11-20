@@ -45,7 +45,7 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
 
     @Override
     public ITeacher getPasswordFromEmail(String email, String password) {
-        return new Teacher(1,
+        return new Teacher(
                 "Második Márk",
                 BitmapFactory.decodeResource(_context.getResources(),
                         R.drawable.missing),
@@ -63,7 +63,6 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
 
     private void InitFakeDatabase(){
         teachers.add(new Teacher(
-                0,
                 "Első Endre",
                 BitmapFactory.decodeResource(_context.getResources(),
                         R.drawable.missing),
@@ -81,7 +80,6 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                 ""
         ));
         teachers.add(new Teacher(
-                1,
                 "Második Márk",
                 BitmapFactory.decodeResource(_context.getResources(),
                         R.drawable.missing),
@@ -95,7 +93,6 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                 ""
         ));
         teachers.add(new Teacher(
-                2,
                 "További Tege",
                 BitmapFactory.decodeResource(_context.getResources(),
                         R.drawable.missing),
@@ -111,7 +108,6 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                 ""
         ));
         teachers.add(new Teacher(
-                3,
                 "További Tege",
                 BitmapFactory.decodeResource(_context.getResources(),
                         R.drawable.missing),
@@ -127,7 +123,6 @@ public class FakeDatabaseHandler implements IDatabaseHandler {
                 ""
         ));
         teachers.add(new Teacher(
-                4,
                 "További Tege",
                 BitmapFactory.decodeResource(_context.getResources(),
                         R.drawable.missing),

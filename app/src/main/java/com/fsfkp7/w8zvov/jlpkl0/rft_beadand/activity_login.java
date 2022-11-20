@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -15,13 +16,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
-
-import org.w3c.dom.Text;
+import com.teacher.sqlitedatabase.data.SQLSubject;
+import com.teacher.sqlitedatabase.data.SQLTeacher;
 
 import java.util.ArrayList;
 
@@ -38,10 +39,14 @@ public class activity_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         password = findViewById(R.id.editText_password);
         email = findViewById(R.id.editText_email);
         button = findViewById(R.id.button_signIn);
         registration = findViewById(R.id.textView_registration);
+
+        addTeacher();
 
         /**
          *onclick listener for the button_signIn
@@ -102,6 +107,8 @@ public class activity_login extends AppCompatActivity {
         }
     }
 
+
+
     /**
      * Checks if the teacher exist in the database.
      * If yes, returns the teacher
@@ -110,7 +117,7 @@ public class activity_login extends AppCompatActivity {
      * @return teacher
      */
     public ITeacher getTeacherIfExist(String email, String password){
-        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(getApplicationContext());
+        IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
         ITeacher teacher = dbHandler.getPasswordFromEmail(email, password);
         if (teacher != null){
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
@@ -137,6 +144,27 @@ public class activity_login extends AppCompatActivity {
         }
 
         ft.commit();
+    }
+    public void addTeacher(){
+        IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
+        ITeacher teach2 = new SQLTeacher(
+                -1,
+                "Nagy Márk",
+                null,
+                new ArrayList<ISubject>(){
+                    {
+                        add(new SQLSubject(-1,0,"Matematika",3000));
+                        add(new SQLSubject(-1,0,"Rajz",3000));;
+                    }
+                },
+                "nagy@gmail.com",
+                "+36703476323"
+        );
+        teach2.password = "123";
+
+        dbHandler.addOrEditTeacher((teach2));
+        //ITeacher tc =  dbHandler.getPasswordFromEmail("nagy@gmail.com", "123");
+        //Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
     }
 }
 
