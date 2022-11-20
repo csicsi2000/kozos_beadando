@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.SubjectAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
+import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +104,13 @@ public class activity_profile extends AppCompatActivity {
                         phone.getText().toString(),
                         teacher.password
                 );
+                addTeacher(updated_teacher);
             }
         });
+    }
+    public void addTeacher(ITeacher tc){
+        IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
+        Boolean value = dbHandler.addOrEditTeacher((tc));
+        Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
     }
 }
