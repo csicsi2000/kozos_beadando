@@ -23,6 +23,9 @@ public abstract class ITeacher {
      * The subjects hat the teacher can teach
      */
     public List<ISubject> subjects;
+    public List<ISubject> getSubjects(){
+        return subjects;
+    }
     /**
      * The email address of the teacher
      */

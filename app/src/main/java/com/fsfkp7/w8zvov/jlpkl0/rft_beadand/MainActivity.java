@@ -3,37 +3,20 @@ package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
-import android.view.View;
-import android.view.Menu;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.SubjectAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.TeacherAdapter;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.database.FakeDatabaseHandler;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
 import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     List<ITeacher> teacherlist;
 
-   IDatabaseHandler databaseHandler;
+    IDatabaseHandler databaseHandler;
     Button signIn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
 
         signIn=(Button)findViewById(R.id.SignIn);

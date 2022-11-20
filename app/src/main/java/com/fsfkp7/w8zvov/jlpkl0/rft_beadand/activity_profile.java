@@ -81,7 +81,7 @@ public class activity_profile extends AppCompatActivity {
             public void onClick(View view) {
                 View v;
                 subject_list = findViewById(R.id.listView_subjects);
-                List<Subject> updated_subject = new ArrayList<Subject>();
+                List<ISubject> updated_subject = new ArrayList<>();
                 EditText et_sub;
                 EditText et_price;
                 for (int i = 0; i < subject_list.getCount(); i++)
@@ -89,7 +89,7 @@ public class activity_profile extends AppCompatActivity {
                     v = subject_list.getChildAt(i);
                     et_sub = v.findViewById(R.id.Subject);
                     et_price = v.findViewById(R.id.Price);
-                    Subject subject = new Subject(et_sub.getText().toString(),
+                    ISubject subject = new Subject(et_sub.getText().toString(),
                             Integer.parseInt(et_price.getText().toString()));
                     updated_subject.add((subject));
                 }

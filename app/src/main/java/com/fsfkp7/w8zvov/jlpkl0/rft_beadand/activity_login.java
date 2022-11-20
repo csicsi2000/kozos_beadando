@@ -20,6 +20,7 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
 import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 import com.teacher.sqlitedatabase.data.SQLSubject;
 import com.teacher.sqlitedatabase.data.SQLTeacher;
@@ -147,24 +148,23 @@ public class activity_login extends AppCompatActivity {
     }
     public void addTeacher(){
         IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
-        ITeacher teach2 = new SQLTeacher(
-                -1,
+        ITeacher teach2 = new Teacher(
                 "Nagy Márk",
                 null,
                 new ArrayList<ISubject>(){
                     {
-                        add(new SQLSubject(-1,0,"Matematika",3000));
-                        add(new SQLSubject(-1,0,"Rajz",3000));;
+                        add(new Subject("Matematika",3000));
+                        add(new Subject("Rajz",3000));;
                     }
                 },
                 "nagy@gmail.com",
-                "+36703476323"
+                "+36703476323",
+                "123"
         );
-        teach2.password = "123";
 
-        dbHandler.addOrEditTeacher((teach2));
-        //ITeacher tc =  dbHandler.getPasswordFromEmail("nagy@gmail.com", "123");
-        //Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
+        Boolean value = dbHandler.addOrEditTeacher((teach2));
+        ITeacher tc =  dbHandler.getPasswordFromEmail("nagy@gmail.com", "123");
+        Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
     }
 }
 

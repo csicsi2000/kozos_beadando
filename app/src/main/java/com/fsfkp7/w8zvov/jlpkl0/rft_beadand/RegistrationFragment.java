@@ -66,8 +66,8 @@ public class RegistrationFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Subject subject = new Subject(subject_name.getText().toString(), Integer.parseInt(price.getText().toString()));
-                List<Subject> subjects = new ArrayList<>();
+                ISubject subject = new Subject(subject_name.getText().toString(), Integer.parseInt(price.getText().toString()));
+                List<ISubject> subjects = new ArrayList<>();
                 subjects.add(subject);
 
                 ITeacher teacher = new Teacher(
