@@ -1,6 +1,7 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -67,14 +68,6 @@ public class activity_profile extends AppCompatActivity {
         SubjectAdapter adapter = new SubjectAdapter(getApplicationContext(), R.layout.list_item, subjectList);
         ListView listView = findViewById(R.id.listView_subjects);
         listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // When clicked, show a toast with the TextView text
-                Toast.makeText(getApplicationContext(), String.valueOf(adapter.getCount()), Toast.LENGTH_SHORT).show();
-            }
-        });
 
         btn_update = findViewById(R.id.button_update);
 
