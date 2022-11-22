@@ -224,4 +224,24 @@ public class SQLiteDatabaseHandlerTests {
         // assert
         Assert.assertNull(foundTeacher);
     }
+
+    @Test
+    public void TC07_getIfTeacherExist_InvalidLoginInfo_NoTeacherReturned(){
+        // arrange
+        IDatabaseHandler dbHandler = new SQLiteDatabaseHandler(testContext);
+        ArrayList<ISubject> subjectsArray = new ArrayList<ISubject>();
+        subjectsArray.add(new SQLSubject(-1,-1,"Matek",3000));
+        subjectsArray.add(new SQLSubject(-1,-1,"Történelem",2000));
+        ITeacher teacher = new SQLTeacher(
+                -1,
+                "test tamás",
+                null,
+                subjectsArray,
+                "test@gmg.com",
+                "+36278321");
+        teacher.password = "abcde";
+        // act
+        Assert.assertTrue(dbHandler.addOrEditTeacher(teacher));
+        Assert.assertFalse(dbHandler.addOrEditTeacher(teacher));
+    }
 }
