@@ -89,6 +89,15 @@ public class activity_profile extends AppCompatActivity {
                     updated_subject.add((subject));
                 }
 
+                teacher.email = email.getText().toString();
+                teacher.phoneNumber = phone.getText().toString();
+                for (int j = 0; j< updated_subject.size(); j++){
+                    teacher.subjects.add(updated_subject.get(j));
+                }
+
+                addTeacher(teacher);
+
+                /*
                 ITeacher updated_teacher = new Teacher(
                         teacher.name,
                         teacher.image,
@@ -98,6 +107,7 @@ public class activity_profile extends AppCompatActivity {
                         teacher.password
                 );
                 addTeacher(updated_teacher);
+                */
             }
         });
     }
