@@ -19,11 +19,8 @@ import com.teacher.sqlitedatabase.databasehelpers.SubjectReaderDBHelper;
 import com.teacher.sqlitedatabase.databasehelpers.TeacherReaderDBHelper;
 
 import java.io.ByteArrayOutputStream;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.security.auth.Subject;
 
 public class SQLiteDatabaseHandler implements IDatabaseHandler {
     private Context _context;
@@ -33,6 +30,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         _context = context;
         // todo remove this in production
         //initFakeData();
+        setup();
         // todo
     }
 
@@ -83,15 +81,30 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         teach2.password = "";
         addOrEditTeacher(teach2);
     }
+    public void setup() {
+        SubjectReaderDBHelper sHelper = new SubjectReaderDBHelper(_context);
+        SQLiteDatabase sdb = sHelper.getWritableDatabase();
+        sHelper.deleteDB(sdb);
+        sHelper.onCreate(sdb);
 
+        TeacherReaderDBHelper tHelper = new TeacherReaderDBHelper(_context);
+        SQLiteDatabase tdb = tHelper.getWritableDatabase();
+        tHelper.deleteDB(tdb);
+        tHelper.onCreate(tdb);
+    }
+
+    // remove end
     @Override
     public boolean addOrEditTeacher(ITeacher teacher) {
+        if(getIfTeacherExist(teacher)){
+            return false;
+        }
         TeacherReaderDBHelper dbHelper = new TeacherReaderDBHelper(_context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(TeacherReaderContract.TeacherEntry.NAME, teacher.name);
-        values.put(TeacherReaderContract.TeacherEntry.IMAGE, BitmapToByte(teacher.image));
+        values.put(TeacherReaderContract.TeacherEntry.IMAGE, bitmapToByte(teacher.image));
         values.put(TeacherReaderContract.TeacherEntry.EMAIL,teacher.email);
         values.put(TeacherReaderContract.TeacherEntry.PHONE, teacher.phoneNumber);
         values.put(TeacherReaderContract.TeacherEntry.PASSWORD, SupportLogic.GetHashedPassword(teacher.password));
@@ -141,7 +154,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         return true;
     }
 
-    private byte[] BitmapToByte(Bitmap pics){
+    private byte[] bitmapToByte(Bitmap pics){
         if(pics == null){
             return null;
         }
@@ -151,8 +164,18 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         return byteArrayOfImage;
     }
 
-    private Bitmap ByteToBitmap(byte[] bytes){
+    private Bitmap byteToBitmap(byte[] bytes){
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    }
+
+    private Boolean getIfTeacherExist(ITeacher teacher){
+        List<ITeacher> teachers =  getAllTeachersWithWhere(
+                TeacherReaderContract.TeacherEntry.EMAIL+"='"+teacher.email +"'");
+        if(teachers.size()  > 0){
+            Log.d("Database", "TeacherExist: teacher already exist in the database. " + teacher.email);
+            return true;
+        }
+        return  false;
     }
 
     @Override
@@ -199,7 +222,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
             String name = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.NAME));
             Bitmap image;
             try {
-                image = ByteToBitmap(cursor.getBlob(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.IMAGE)));
+                image = byteToBitmap(cursor.getBlob(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.IMAGE)));
             }catch(Exception ex){
                 image = Bitmap.createBitmap(100,100,Bitmap.Config.ARGB_8888);
             }
@@ -260,13 +283,13 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
             return teachers.get(0);
         }
 // TODO :
-        /*
+
         if(teachers.size()>1){
             Log.d("Database", "getPasswordFromEmail: Valami itt nagyon félrement, két ugyanolyan felhasználó ugyanolyan email- és jelszóval nem lehet");
         }
         else if(teachers.size() == 1){
             return teachers.get(0);
-        }*/
+        }
 
         return null;
     }
