@@ -96,9 +96,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
     // remove end
     @Override
     public boolean addOrEditTeacher(ITeacher teacher) {
-        if(getIfTeacherExist(teacher)){
-            return false;
-        }
+
         TeacherReaderDBHelper dbHelper = new TeacherReaderDBHelper(_context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -113,6 +111,9 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         // TODO: duplicate teacher is not allowed
         long newRowId;
         if(teacher.id < 0) {
+            if(getIfTeacherExist(teacher)){
+                return false;
+            }
             newRowId = db.insert(TeacherReaderContract.TeacherEntry.TABLE_NAME, null, values);
         }
         else{
