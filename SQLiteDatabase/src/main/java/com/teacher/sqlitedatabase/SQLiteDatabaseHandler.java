@@ -30,7 +30,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         _context = context;
         // todo remove this in production
         //initFakeData();
-        setup();
+        //setup();
         // todo
     }
 
