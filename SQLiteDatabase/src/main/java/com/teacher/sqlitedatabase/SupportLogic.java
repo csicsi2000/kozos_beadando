@@ -6,7 +6,10 @@ import java.security.MessageDigest;
 
 public class SupportLogic {
     public static String GetHashedPassword(String password){
+        return password;
+/* todo
         MessageDigest md;
+
         try{
             md = MessageDigest.getInstance("SHA-256");
 
@@ -28,5 +31,7 @@ public class SupportLogic {
             Log.d("SupportLogic", "GetHashedPassword: HasAlgorithmFailed");
         }
         return null;
+        */
+
     }
 }
