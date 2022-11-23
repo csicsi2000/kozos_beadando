@@ -80,7 +80,7 @@ public class RegistrationFragment extends Fragment {
 
 
                 Toast.makeText(getActivity(),"hello", Toast.LENGTH_SHORT).show();
-                //((activity_login) getActivity()).addTeacher(teacher);
+                ((activity_login) getActivity()).addTeacher(teacher);
                 //dbhandler.addOrEditTeacher(teacher);
 
                 //clearing input forms

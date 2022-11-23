@@ -1,6 +1,7 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +15,11 @@ import android.widget.Toast;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
+import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Subject;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.SubjectAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
+import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +69,6 @@ public class activity_profile extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView_subjects);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // When clicked, show a toast with the TextView text
-                Toast.makeText(getApplicationContext(), String.valueOf(adapter.getCount()), Toast.LENGTH_SHORT).show();
-            }
-        });
-
         btn_update = findViewById(R.id.button_update);
 
         btn_update.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +89,15 @@ public class activity_profile extends AppCompatActivity {
                     updated_subject.add((subject));
                 }
 
+                teacher.email = email.getText().toString();
+                teacher.phoneNumber = phone.getText().toString();
+                for (int j = 0; j< updated_subject.size(); j++){
+                    teacher.subjects.add(updated_subject.get(j));
+                }
+
+                addTeacher(teacher);
+
+                /*
                 ITeacher updated_teacher = new Teacher(
                         teacher.name,
                         teacher.image,
@@ -102,7 +106,14 @@ public class activity_profile extends AppCompatActivity {
                         phone.getText().toString(),
                         teacher.password
                 );
+                addTeacher(updated_teacher);
+                */
             }
         });
+    }
+    public void addTeacher(ITeacher tc){
+        IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
+        Boolean value = dbHandler.addOrEditTeacher((tc));
+        Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
     }
 }

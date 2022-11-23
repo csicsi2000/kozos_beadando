@@ -30,7 +30,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         _context = context;
         // todo remove this in production
         //initFakeData();
-        setup();
+        //setup();
         // todo
     }
 
@@ -202,6 +202,7 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         String[] projection = {
                 TeacherReaderContract.TeacherEntry._ID,
                 TeacherReaderContract.TeacherEntry.NAME,
+                TeacherReaderContract.TeacherEntry.PASSWORD,
                 TeacherReaderContract.TeacherEntry.IMAGE,
                 TeacherReaderContract.TeacherEntry.EMAIL,
                 TeacherReaderContract.TeacherEntry.PHONE
@@ -221,6 +222,8 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
         while(cursor.moveToNext()) {
             long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry._ID));
             String name = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.NAME));
+            String password = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.PASSWORD));
+
             Bitmap image;
             try {
                 image = byteToBitmap(cursor.getBlob(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.IMAGE)));
@@ -232,7 +235,9 @@ public class SQLiteDatabaseHandler implements IDatabaseHandler {
             String phone = cursor.getString(cursor.getColumnIndexOrThrow(TeacherReaderContract.TeacherEntry.PHONE));
 
             ArrayList<ISubject> subjects = getAllSubjects(itemId);
-            teachers.add(new SQLTeacher(Math.toIntExact(itemId),name,image,subjects,email,phone));
+            ITeacher teacher = new SQLTeacher(Math.toIntExact(itemId),name,image,subjects,email,phone);
+            teacher.password = password;
+            teachers.add(teacher);
         }
         cursor.close();
 

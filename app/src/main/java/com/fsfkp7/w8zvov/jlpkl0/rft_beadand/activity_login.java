@@ -47,7 +47,6 @@ public class activity_login extends AppCompatActivity {
         button = findViewById(R.id.button_signIn);
         registration = findViewById(R.id.textView_registration);
 
-        addTeacher();
 
         /**
          *onclick listener for the button_signIn
@@ -146,24 +145,9 @@ public class activity_login extends AppCompatActivity {
 
         ft.commit();
     }
-    public void addTeacher(){
+    public void addTeacher(ITeacher tc){
         IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
-        ITeacher teach2 = new Teacher(
-                "Nagy Márk",
-                null,
-                new ArrayList<ISubject>(){
-                    {
-                        add(new Subject("Matematika",3000));
-                        add(new Subject("Rajz",3000));;
-                    }
-                },
-                "nagy@gmail.com",
-                "+36703476323",
-                "123"
-        );
-
-        Boolean value = dbHandler.addOrEditTeacher((teach2));
-        ITeacher tc =  dbHandler.getPasswordFromEmail("nagy@gmail.com", "123");
+        Boolean value = dbHandler.addOrEditTeacher((tc));
         Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
     }
 }
