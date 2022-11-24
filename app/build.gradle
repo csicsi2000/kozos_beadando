@@ -28,6 +28,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.fsfkp7.w8zvov.jlpkl0.rft_beadand'
 }
 
 dependencies {

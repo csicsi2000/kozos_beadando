@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/EmailKuldese"
+            android:id="@+id/Email"
             android:layout_width="75dp"
             android:layout_height="54dp"
             android:layout_marginStart="27dp"
@@ -59,7 +59,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/Hivas"
+            android:id="@+id/PhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="66dp"
@@ -68,7 +68,7 @@
             android:text="Hívás"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/EmailKuldese" />
+            app:layout_constraintStart_toEndOf="@+id/Email" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -130,7 +130,7 @@
             android:background="#2196F3"
             android:text="3 Ft/Óra"
             android:textColor="#212121"
-            app:layout_constraintBottom_toTopOf="@+id/Hivas"
+            app:layout_constraintBottom_toTopOf="@+id/PhoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>

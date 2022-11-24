@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -15,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.TeacherAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
 import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
@@ -26,17 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
 
-    EditText name;
-    EditText password;
-    EditText subject;
 
-
-    Button button;
-
-
-
-    Teacher teacher;
-    EditText teachername;
 
     List<ITeacher> teacherlist;
 
@@ -66,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-     //   TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
-      //  ListView listView = findViewById(R.id.listView_teachers);
-        //listView.setAdapter(adapter);
+        TeacherAdapter adapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
+        ListView listView = findViewById(R.id.listView_teachers);
+        listView.setAdapter(adapter);
 
         //setSupportActionBar(binding.appBarMain.toolbar);
         // binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
