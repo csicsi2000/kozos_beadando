@@ -23,7 +23,7 @@
         />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/new_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="30dp"
@@ -32,14 +32,14 @@
         android:drawableStart="@drawable/ic_baseline_subject_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:hint="New subject"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/new_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="30dp"
@@ -53,17 +53,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/new_subject" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imgBtn_add_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/new_price" />
 
 
 

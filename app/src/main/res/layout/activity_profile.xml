@@ -103,19 +103,16 @@
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             app:cardCornerRadius="5dp">
-
-
                 <ListView
                     android:id="@+id/listView_subjects"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
         </androidx.cardview.widget.CardView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center"
         android:background="@color/cardview_shadow_end_color"
         android:weightSum="3">
@@ -123,7 +120,24 @@
             android:id="@+id/button_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Update profile"
+            android:text="Update"
+            android:textSize="10sp"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="home"
+            android:textSize="10sp"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/button_add_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add subject"
+            android:textSize="10sp"
             android:textAlignment="center"/>
     </LinearLayout>
 </LinearLayout>
