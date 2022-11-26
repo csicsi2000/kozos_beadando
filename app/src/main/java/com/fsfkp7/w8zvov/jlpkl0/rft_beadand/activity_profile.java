@@ -149,6 +149,6 @@ public class activity_profile extends AppCompatActivity {
     public void addTeacher(ITeacher tc){
         IDatabaseHandler dbHandler =  new SQLiteDatabaseHandler(getApplicationContext());
         Boolean value = dbHandler.addOrEditTeacher((tc));
-        Toast.makeText(this, tc.phoneNumber.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Update successful", Toast.LENGTH_SHORT).show();
     }
 }
