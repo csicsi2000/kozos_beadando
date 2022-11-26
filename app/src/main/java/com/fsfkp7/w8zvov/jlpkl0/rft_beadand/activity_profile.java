@@ -142,11 +142,7 @@ public class activity_profile extends AppCompatActivity {
                             teacher.image = newAvatar;
                         }
                     }
-
-
                 });
-
-
     }
 
 
