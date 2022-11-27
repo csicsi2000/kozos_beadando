@@ -43,14 +43,23 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        teacher = StaticTeacher.getMyTeacher();
+
+
         databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
 
         signIn=(Button)findViewById(R.id.SignIn);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if()
+
                 Intent intent = new Intent(MainActivity.this,activity_login.class);
                 startActivity(intent);
+
+
+
             }
         });
        teacherlist =   databaseHandler.getAllTeachers();
