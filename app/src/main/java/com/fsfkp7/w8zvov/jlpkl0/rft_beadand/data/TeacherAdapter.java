@@ -29,6 +29,7 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
     public TeacherAdapter(@NonNull Context context, int resource, List<ITeacher> teachers) {
         super(context, resource, teachers);
         this.teachers = teachers;
+
     }
 
     @Override
@@ -89,9 +90,9 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
 
 
                 String number = teachers.get(position).phoneNumber;
-                Intent intent = new Intent(Intent.ACTION_CALL);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" +number));
-               // startActivity(intent);
+                getContext().startActivity(intent);
 
             }
         });
