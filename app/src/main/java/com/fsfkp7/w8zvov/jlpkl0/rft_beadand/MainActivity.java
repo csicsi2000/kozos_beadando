@@ -1,13 +1,11 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
-import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.Teacher;
+import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.SearchAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.TeacherAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
 import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
@@ -43,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        teacher = StaticTeacher.getMyTeacher();
+
+        ITeacher teacher = StaticTeacher.getMyTeacher();
+
+
 
 
         databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
@@ -53,16 +54,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if()
 
-                Intent intent = new Intent(MainActivity.this,activity_login.class);
-                startActivity(intent);
-
-
+                if(teacher==null){
+                    Intent intent = new Intent(MainActivity.this,activity_login.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(MainActivity.this,activity_profile.class);
+                    startActivity(intent);
+                }
 
             }
         });
        teacherlist =   databaseHandler.getAllTeachers();
+       // searchList =
+
 
 
 
@@ -71,31 +77,20 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView_teachers);
         listView.setAdapter(adapter);
 
-        //setSupportActionBar(binding.appBarMain.toolbar);
-        // binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
 
-        // Teacher teacher = StaticTeacher.getMyTeacher();
 
-        //   ImageView profile = findViewById(R.id.ImageView_Profile);
-        // profile.setImageBitmap(teacher.image);
 
-        //  EditText name = findViewById(R.id.EditText_Name);
-        // name.setText(teacher.name);
 
-        //   EditText email = findViewById(R.id.EditText_Email);
-        // email.setText(teacher.email);
+      /*  SearchAdapter searchAdapter = new TeacherAdapter(getApplicationContext(), R.layout.search_list_items, searchList);
+        ListView searchlistView = findViewById(R.id.SearchBox);
+        searchlistView.setAdapter(searchAdapter);
+        searchlistView.getOnItemClickListener= AdapterView.OnItemClickListener{parent, view, position, id ->}
 
-        //   EditText phone =findViewById(R.id.EditText_Phone);
-        //  phone.setText(teacher.phoneNumber);
+       // SearchBox = (EditText) view.findViewById(R.id.SearchBox);
+*/
 
-        //subjectList = new ArrayList<>();
 
-        // teachername = findViewById(R.id.editText_teacher);
-        // button = findViewById(R.id.button_signIn);
 
-      //  for (int i = 0; i < teacher.subjects.size(); i++) {
-      //      subjectList.add(teacher.subjects.get(i));
-       // }
 
 
     }

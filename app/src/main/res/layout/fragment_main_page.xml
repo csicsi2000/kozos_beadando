@@ -13,11 +13,11 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="58dp"
         android:text="Típus"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/SearchBox"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/SearchBox"
         android:layout_width="206dp"
         android:layout_height="36dp"
         android:layout_marginStart="52dp"
