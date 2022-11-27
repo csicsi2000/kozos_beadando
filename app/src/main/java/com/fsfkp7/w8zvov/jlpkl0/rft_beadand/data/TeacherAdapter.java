@@ -92,6 +92,7 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
                 String number = teachers.get(position).phoneNumber;
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" +number));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
 
             }
