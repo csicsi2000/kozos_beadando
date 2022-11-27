@@ -57,6 +57,7 @@ public class activity_profile extends AppCompatActivity {
          */
         teacher = StaticTeacher.getMyTeacher();
 
+        //displaying teacher details.
         ImageView profile = findViewById(R.id.ImageView_Profile);
         profile.setImageBitmap(teacher.image);
 
@@ -69,16 +70,12 @@ public class activity_profile extends AppCompatActivity {
         EditText phone =findViewById(R.id.EditText_Phone);
         phone.setText(teacher.phoneNumber);
 
+        //putting all the subjects into this arraylist
         subjectList = new ArrayList<>();
 
         for (int i = 0; i < teacher.subjects.size(); i++){
             subjectList.add(teacher.subjects.get(i));
         }
-
-        /**
-         * putting all te subjects into an arraylist
-        */
-
 
         /**
          * Displaying subjects on activity_profile using adapters.
@@ -88,6 +85,7 @@ public class activity_profile extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView_subjects);
         listView.setAdapter(adapter);
 
+
         //updated profile information
         btn_update = findViewById(R.id.button_update);
         btn_update.setOnClickListener(new View.OnClickListener() {
@@ -96,10 +94,16 @@ public class activity_profile extends AppCompatActivity {
             public void onClick(View view) {
                 View v;
 
+                //itt mit csinalok?
                 subject_list = findViewById(R.id.listView_subjects);
+                //?
+
                 List<ISubject> updated_subject = new ArrayList<>();
                 EditText et_sub;
                 EditText et_price;
+
+                //looping through the listview and putting all the updated subjects in
+                //a new subject arrayList
 
                 for (int i = 0; i < subject_list.getCount(); i++)
                 {
@@ -111,9 +115,13 @@ public class activity_profile extends AppCompatActivity {
                     updated_subject.add((subject));
                 }
 
+
                 teacher.email = email.getText().toString();
                 teacher.phoneNumber = phone.getText().toString();
-                String ki = String.valueOf(updated_subject.size());
+
+                //delete all the subbject first so no duplicates.
+                teacher.subjects.clear();
+
                 for (int j = 0; j< updated_subject.size(); j++){
                     teacher.subjects.add(updated_subject.get(j));
                     Toast.makeText(activity_profile.this,
