@@ -95,6 +95,30 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
 
+
+
+
+
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+
+                String email = teachers.get(position).email;
+                Intent mailIntent = new Intent(Intent.ACTION_SENDTO);
+                mailIntent.setData(Uri.parse("mailto:" + email));
+                mailIntent.putExtra(Intent.EXTRA_EMAIL, email);
+                mailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(mailIntent);
+                //  getContext().startActivity(Intent.createChooser(mailIntent, getContext().getString(R.string.email)));
+
+
+
+
+
             }
         });
         return convertView;
