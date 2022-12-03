@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
         this.teachers = teachers;
 
     }
+
+
 
     @Override
     public int getCount() {
