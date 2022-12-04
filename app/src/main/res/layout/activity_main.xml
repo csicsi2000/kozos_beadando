@@ -7,7 +7,14 @@
     android:layout_height="match_parent"
     android:background="#029AA1"
     android:backgroundTint="#029AA1"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+  >
+
+
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
