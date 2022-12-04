@@ -55,10 +55,13 @@ public class MainActivity extends AppCompatActivity {
         if (teacher != null) {
             signIn.setText(teacher.name + " profile");
         }
+
         teacherlist = databaseHandler.getAllTeachers();
+
         TeacherAdapter teacheradapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
         ListView listViewteacher = findViewById(R.id.listView_teachers);
         listViewteacher.setAdapter(teacheradapter);
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,21 +104,31 @@ public class MainActivity extends AppCompatActivity {
                     //listViewteacher.setAdapter(teacheradapter);
                     searchadapter.getFilter().filter(" ");
 
+
+
+                    teacherlist = databaseHandler.getAllTeachers();
+
+                    TeacherAdapter teacheradapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
+                    ListView listViewteacher = findViewById(R.id.listView_teachers);
+                    listViewteacher.setAdapter(teacheradapter);
                     teacheradapter.getFilter().filter(query);
 
 
                 } else {
                     Toast.makeText(MainActivity.this, "No Match found", Toast.LENGTH_LONG).show();
+
                 }
+
                 return false;
+
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
                 searchadapter.getFilter().filter(query);
 
-                listViewteacher.setAdapter(teacheradapter);
-                // teacheradapter.getFilter().filter(query);
+
+
                 return false;
             }
         });
