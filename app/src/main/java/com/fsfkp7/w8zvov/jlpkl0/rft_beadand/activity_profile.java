@@ -119,7 +119,7 @@ public class activity_profile extends AppCompatActivity {
                 teacher.email = email.getText().toString();
                 teacher.phoneNumber = phone.getText().toString();
 
-                //delete all the subbject first so no duplicates.
+                //delete all the subject first so no duplicates.
                 teacher.subjects.clear();
 
                 for (int j = 0; j< updated_subject.size(); j++){
