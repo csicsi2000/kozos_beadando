@@ -72,7 +72,7 @@ public class activity_login extends AppCompatActivity {
         });
 
         //Hiding the registration fragment
-        RegistrationFragment rf = new RegistrationFragment();
+        RegistrationFragment rf;
         FragmentManager fragmentManager = getSupportFragmentManager();
         rf = (RegistrationFragment) fragmentManager.findFragmentById(R.id.registration_fragnent);
         RegistrationFragment finalRf = rf;
