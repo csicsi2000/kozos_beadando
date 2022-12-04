@@ -46,14 +46,6 @@
                 android:iconifiedByDefault="false"
                 android:queryHint="Search Here" />
 
-            <Button
-                android:id="@+id/Típus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.15"
-                android:backgroundTint="#C38D9D"
-                android:text="Típus" />
-
         </LinearLayout>
 
         <RelativeLayout

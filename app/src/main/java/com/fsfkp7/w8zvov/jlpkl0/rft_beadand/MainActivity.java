@@ -116,16 +116,19 @@ public class MainActivity extends AppCompatActivity {
 
         searchadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         serachListview.setAdapter(searchadapter);
+        searchadapter.getFilter().filter(" ");
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
                 if(list.contains(query)){
+                    //listViewteacher.setAdapter(teacheradapter);
+                    searchadapter.getFilter().filter(" ");
 
 
-
-
+                    teacheradapter.getFilter().filter(query);
 
 
                 }else{
@@ -137,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String query) {
                searchadapter.getFilter().filter(query);
-
+                teacheradapter.getFilter().filter(query);
 
                // teacheradapter.getFilter().filter(query);
                 return false;
