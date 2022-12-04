@@ -5,18 +5,21 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#029AA1"
+    android:backgroundTint="#029AA1"
     android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#029AA1"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_margin="20dp"
             android:orientation="horizontal">
 
             <Button
@@ -24,49 +27,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+                android:backgroundTint="#C38D9D"
                 android:text="Sign In" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center"
-            >
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/SearchBox"
+            <SearchView
+                android:id="@+id/searchView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"
-                app:actionViewClass="android.widget.SearchView"
-                app:showAsAction="ifRoom|withText"
-                android:layout_weight="0.7"/>
-
-            <Button
-                android:id="@+id/Típus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.15"
-                android:text="Típus" />
+                android:layout_alignParentTop="true"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Here" />
 
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#7EC6BA">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="391dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="89dp">
+                app:cardBackgroundColor="#029AA1"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="false"
+                app:contentPadding="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="366dp"
+                    android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:orientation="vertical">
@@ -85,5 +85,23 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:background="#FFFFFF"
+            android:divider="#ad5"
+            android:dividerHeight="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ListView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

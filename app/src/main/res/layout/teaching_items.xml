@@ -1,85 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:background="@android:drawable/dialog_holo_light_frame"
+    android:backgroundTint="#7EC6BA">
 
-    <RelativeLayout
+
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        android:layout_marginTop="20dp"
+        android:background="#7EC6BA"
+        android:minHeight="500dp"
+        android:padding="10dp">
 
-        <TableLayout
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#34818C">
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="16dp"
-                    tools:src="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/Name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="84dp"
-                    android:text="name"
-                    android:textColor="#F1EDED" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="2dp">
-
-                    <ListView
-                        android:id="@+id/listView_subjects"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </androidx.cardview.widget.CardView>
-
-            </TableRow>
-
-            <TableRow
+            <ImageView
+                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="16dp"
+                tools:src="@tools:sample/avatars" />
 
-                <Button
-                    android:id="@+id/PhoneNumber"
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textAlignment="center"
+                android:textColor="#F1EDED" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@android:drawable/divider_horizontal_dark"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="#E8A87C">
+
+                <ListView
+                    android:id="@+id/listView_subjects"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/Email"
-                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Email" />
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:backgroundTint="#E8A87C" />
+            </androidx.cardview.widget.CardView>
 
-            </TableRow>
+        </TableRow>
 
-        </TableLayout>
-    </RelativeLayout>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/PhoneNumber"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:backgroundTint="#C38D9D"
+                android:text="Button"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:backgroundTint="#C38D9D"
+                android:text="Email"
+                android:textColor="#FFFFFF" />
+
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>
+
