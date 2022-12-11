@@ -78,26 +78,54 @@ public class RegistrationFragment extends Fragment {
                         phone.getText().toString(),
                         password.getText().toString());
 
+                if (checkTeacherData(teacher)){
+                    Toast.makeText(getActivity(),"hello", Toast.LENGTH_SHORT).show();
+                    ((activity_login) getActivity()).addTeacher(teacher);
+                    //dbhandler.addOrEditTeacher(teacher);
 
-                Toast.makeText(getActivity(),"hello", Toast.LENGTH_SHORT).show();
-                ((activity_login) getActivity()).addTeacher(teacher);
-                //dbhandler.addOrEditTeacher(teacher);
+                    //clearing input forms
+                    clearInputForms(name);
+                    clearInputForms(email);
+                    clearInputForms(phone);
+                    clearInputForms(password);
+                    clearInputForms(subject_name);
+                    clearInputForms(price);
 
-                //clearing input forms
-                clearInputForms(name);
-                clearInputForms(email);
-                clearInputForms(phone);
-                clearInputForms(password);
-                clearInputForms(subject_name);
-                clearInputForms(price);
-
-                //closing the fragment.
-                ((activity_login) getActivity()).showHideFragment(RegistrationFragment.this);
+                    //closing the fragment.
+                    ((activity_login) getActivity()).showHideFragment(RegistrationFragment.this);
+                }
             }
         });
         return view;
     }
 
+    public boolean checkTeacherData(ITeacher teacher){
+        if (teacher.name.toString().length() < 2){
+            Toast.makeText(getActivity(), "Invalid name", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!((activity_login) getActivity()).isEmailAddressValid(email)) {
+            Toast.makeText(getActivity(), "Invalid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (teacher.phoneNumber.length() < 11){
+            Toast.makeText(getActivity(), "Invalid phone number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (teacher.password.length() < 6){
+            Toast.makeText(getActivity(), "Too short password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (teacher.subjects.get(0).name.length() < 2){
+            Toast.makeText(getActivity(), "Invalid subject", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (String.valueOf(teacher.subjects.get(0).price).length() < 3){
+            Toast.makeText(getActivity(), "Invalid price", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
     void clearInputForms(EditText text){
         text.setText("");
     }

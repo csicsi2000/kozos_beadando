@@ -92,7 +92,7 @@ public class activity_login extends AppCompatActivity {
      * function to validate email address.
      */
 
-    private boolean isEmailAddressValid(EditText email){
+    public boolean isEmailAddressValid(EditText email){
         String emailEntered = email.getText().toString();
 
         /**
