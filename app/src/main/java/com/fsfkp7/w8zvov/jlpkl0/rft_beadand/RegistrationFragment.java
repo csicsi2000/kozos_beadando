@@ -140,5 +140,4 @@ public class RegistrationFragment extends Fragment {
         }
         return true;
     }
-
 }
