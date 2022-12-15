@@ -99,6 +99,7 @@ public class RegistrationFragment extends Fragment {
         return view;
     }
 
+    //could check much more things here
     public boolean checkTeacherData(ITeacher teacher){
         if (teacher.name.toString().length() < 2){
             Toast.makeText(getActivity(), "Invalid name", Toast.LENGTH_SHORT).show();
@@ -108,7 +109,7 @@ public class RegistrationFragment extends Fragment {
             Toast.makeText(getActivity(), "Invalid email", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (teacher.phoneNumber.length() < 11){
+        if (teacher.phoneNumber.length() < 11 && phoneNumberValidator(teacher.phoneNumber)){
             Toast.makeText(getActivity(), "Invalid phone number", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -126,7 +127,17 @@ public class RegistrationFragment extends Fragment {
         }
         return true;
     }
+
     void clearInputForms(EditText text){
         text.setText("");
+    }
+
+    public boolean phoneNumberValidator(String phoneNumber){
+        for (int i = 0; i < phoneNumber.length(); i++) {
+            if( !Character.isDigit(i)){
+                return false;
+            }
+        }
+        return true;
     }
 }
