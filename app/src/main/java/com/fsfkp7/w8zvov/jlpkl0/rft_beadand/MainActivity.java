@@ -125,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String query) {
-                searchadapter.getFilter().filter(query);
+                if(query.isEmpty()){
+                    searchadapter.getFilter().filter(" "); }else{
+                searchadapter.getFilter().filter(query);}
 
 
 
