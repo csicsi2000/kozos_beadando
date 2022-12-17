@@ -1,8 +1,11 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -20,6 +27,7 @@ import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ISubject;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -40,17 +48,18 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults filterResults = new FilterResults();
             ArrayList<ITeacher> tempList=new ArrayList<ITeacher>();
+
             //constraint is the result from text you want to filter against.
             //objects is your data set you will filter from
-            if(constraint != null && teachers!=null) {
+            if(teachers!=null) {
                 int length=teachers.size();
                 int i=0;
-
+                String REGEX = "^"+constraint+".*$";
                 while(i<length){
                     ITeacher item=teachers.get(i);
                     //do whatever you wanna do here
                     //adding result set output array
-                    String REGEX = "^"+constraint+".*$";
+
                     boolean matcher = Pattern.matches(REGEX, item.name.toLowerCase());
                     if(matcher){
                         tempList.add(item);
@@ -66,9 +75,6 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
                             si++;
                         }
                     }
-
-
-
                     i++;
                 }
                 //following two lines is very important
@@ -76,7 +82,9 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
                 filterResults.values = tempList;
                 filterResults.count = tempList.size();
             }
+
             return filterResults;
+
         }
 
         @SuppressWarnings("unchecked")
@@ -140,11 +148,15 @@ public class TeacherAdapter extends ArrayAdapter<ITeacher> {
         TextView name = convertView.findViewById(R.id.Name);
         Button email = convertView.findViewById(R.id.Email);
         Button phoneNumber = convertView.findViewById(R.id.PhoneNumber);
-
+        ImageView imageView = convertView.findViewById(R.id.ImageView);
 
         name.setText(teachers.get(position).name);
         email.setText(teachers.get(position).email);
         phoneNumber.setText(teachers.get(position).phoneNumber);
+        imageView.setImageBitmap(teachers.get(position).image);
+
+
+
 
 
 

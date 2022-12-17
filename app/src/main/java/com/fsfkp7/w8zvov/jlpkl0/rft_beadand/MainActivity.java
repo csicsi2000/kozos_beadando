@@ -1,29 +1,19 @@
 package com.fsfkp7.w8zvov.jlpkl0.rft_beadand;
 
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
-
-
-
-
-
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.data.ITeacher;
 import com.fsfkp7.w8zvov.jlpkl0.interfaces.database.IDatabaseHandler;
-
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.data.TeacherAdapter;
 import com.fsfkp7.w8zvov.jlpkl0.rft_beadand.databinding.ActivityMainBinding;
 import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
@@ -39,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     SearchView searchView;
     ListView serachListview;
     ArrayList<String> list;
-    ArrayAdapter<String > searchadapter;
+    ArrayAdapter<String> searchadapter;
 
 
     List<ITeacher> teacherlist;
@@ -59,46 +49,36 @@ public class MainActivity extends AppCompatActivity {
         ITeacher teacher = StaticTeacher.getMyTeacher();
 
 
+        databaseHandler = new SQLiteDatabaseHandler(getApplicationContext());
 
-
-        databaseHandler= new SQLiteDatabaseHandler(getApplicationContext());
-
-        signIn=(Button)findViewById(R.id.SignIn);
-        if(teacher!=null){
-            signIn.setText(teacher.name+" profile");
+        signIn = (Button) findViewById(R.id.SignIn);
+        if (teacher != null) {
+            signIn.setText(teacher.name + " profile");
         }
 
-        signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                if(teacher==null){
-                    Intent intent = new Intent(MainActivity.this,activity_login.class);
-                    startActivity(intent);
-                }
-                else{
-                    Intent intent = new Intent(MainActivity.this,activity_profile.class);
-                    startActivity(intent);
-                }
-
-            }
-        });
-       teacherlist =   databaseHandler.getAllTeachers();
-       // searchList =
-
-
-
-
+        teacherlist = databaseHandler.getAllTeachers();
 
         TeacherAdapter teacheradapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
         ListView listViewteacher = findViewById(R.id.listView_teachers);
         listViewteacher.setAdapter(teacheradapter);
 
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listViewteacher.setAdapter(teacheradapter);
 
+                if (teacher == null) {
+                    Intent intent = new Intent(MainActivity.this, activity_login.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, activity_profile.class);
+                    startActivity(intent);
+                }
 
+            }
+        });
 
-
+        // searchList =
 
 
         searchView = findViewById(R.id.searchView);
@@ -106,15 +86,12 @@ public class MainActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        for (int i = 0; i < teacherlist.size(); i++){
+        for (int i = 0; i < teacherlist.size(); i++) {
             list.add(teacherlist.get(i).name);
         }
 
 
-
-
-
-        searchadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
+        searchadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         serachListview.setAdapter(searchadapter);
         searchadapter.getFilter().filter(" ");
 
@@ -123,26 +100,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                if(list.contains(query)){
+                if (list.contains(query)) {
                     //listViewteacher.setAdapter(teacheradapter);
                     searchadapter.getFilter().filter(" ");
 
 
+
+                    teacherlist = databaseHandler.getAllTeachers();
+
+                    TeacherAdapter teacheradapter = new TeacherAdapter(getApplicationContext(), R.layout.teaching_items, teacherlist);
+                    ListView listViewteacher = findViewById(R.id.listView_teachers);
+                    listViewteacher.setAdapter(teacheradapter);
                     teacheradapter.getFilter().filter(query);
 
 
-                }else{
-                    Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No Match found", Toast.LENGTH_LONG).show();
+
                 }
+
                 return false;
+
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-               searchadapter.getFilter().filter(query);
-                teacheradapter.getFilter().filter(query);
+                if(query.isEmpty()){
+                    searchadapter.getFilter().filter(" "); }else{
+                searchadapter.getFilter().filter(query);}
 
-               // teacheradapter.getFilter().filter(query);
+
+
                 return false;
             }
         });
