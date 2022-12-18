@@ -53,7 +53,7 @@ A szoftverekben meglévő hibák felderítése még az üzembe helyezés előtt.
 |     | Adattárolás               | Tesztelés                         | 2         | 16      | 16               |
 |     | Adattárolás               | Buffer bug javításra              | 2         | 16      | 16               |
 |     | Android applikáció        | Buffer bug javításra              | 2         | 16      | 16               |
-|     | Teljes applikáció         | Final Smoke Test                  | 2         | 16      | 16               |
+|     | Teljes applikáció         | Final Smoke Test                  | 2         | 4       | 4                |
 
 
 ### 2.4 Mérföldkövek
