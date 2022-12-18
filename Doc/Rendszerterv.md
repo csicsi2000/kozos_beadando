@@ -156,7 +156,7 @@ graph TD
 
 ### 5.4 Képernyőtervek
 
-Ez csak a Concept amit.
+Ez csak a Concept amit az elején csináltunk.  
 ![alt text](Images/Rendszerterv/UI_Concept.PNG)
 
 ## 6. Fizikai környezet
