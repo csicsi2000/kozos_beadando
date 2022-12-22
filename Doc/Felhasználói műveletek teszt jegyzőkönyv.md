@@ -2,18 +2,26 @@
 Tesztelést végezte: Kis Sándor <br>
 Operációs rendszer: <br>
 Dátum:<br>
-Talált hibák száma:
+Talált hibák száma: 1
 &nbsp;&nbsp;
 ## Felhasználói műveletek tesztelése
 
 ### Regisztráció
 A rendszerbe való belépéshez regisztrációra van szükség. 
 1. Első lépésben regisztráltam saját magamat mint tanárt a saját személyes adataimmal.
-2. A név regisztrációs mezőt kitöltetlenül hagyva az "Invalid name" hibaüzenet jelenik meg
-3. Hibás email címet beírva az "invalid email" hibaüzenet jelenik meg 
+2. A név regisztrációs mezőt kitöltetlenül hagyva az "Invalid name" hibaüzenet jelenik meg.
+3. Hibás email címet beírva az "invalid email" hibaüzenet jelenik meg. 
+4. Ha a telefonszám tartalmz nem szám karaktereket vagy a telefonszám hossza nem éri el a 11 karaktert akkor az "invalid phone number" hibaüzenet jelenik meg.
+5. Regisztrálni a tantárgy és az órabér megadása nélkül is tudtam. Ezeket az adatok a felhasználói profil oldalon később be tudtam állítani.
 
+### Bejelentkezés
+1. Első lépésben próbáltam adatok megadása nélkül bejelentkezni, ekkor az "Email address is not valid" hibaüzenet jelenik meg.
+2. Második lépésben próbáltam hamis adatokkal bejelentkezni, ekkor a "Login failed" hibaüzenet jelent meg.
 
-üöí
+### Felhasználói profil
+1. A felhasználó adatainak módosítására van lehetőség. Először a felhasználói email címet változtattam meg. Úgy választottam meg az új email címet, hogy ne legyen benne @ jel. Az email cím  sikeresen elmentésre került. Ezután ujjraindítottam a programot és próbáltam bejelentkezni új email címmel, de ekkor az "Email address is not valid" hibaüzenet  kaptam, mert az email cim nem tartalmazta a @ jelet. 
+
+üöíóáéőú
 
 
 
