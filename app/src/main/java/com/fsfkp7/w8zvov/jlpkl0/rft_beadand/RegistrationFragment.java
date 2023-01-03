@@ -23,6 +23,7 @@ import com.teacher.sqlitedatabase.SQLiteDatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RegistrationFragment extends Fragment {
 
@@ -66,17 +67,27 @@ public class RegistrationFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ISubject subject = new Subject(subject_name.getText().toString(), Integer.parseInt(price.getText().toString()));
                 List<ISubject> subjects = new ArrayList<>();
-                subjects.add(subject);
+                if(subject_name.getText().toString().length()>0 && price.getText().toString().length()>0)
+                {
+                    ISubject subject = new Subject(subject_name.getText().toString(), Integer.parseInt(price.getText().toString()));
+                    subjects.add(subject);
 
-                ITeacher teacher = new Teacher(
-                        name.getText().toString(),
-                        btm,
-                        subjects,
-                        email.getText().toString(),
-                        phone.getText().toString(),
-                        password.getText().toString());
+                }
+               ITeacher teacher = null;
+                try{
+                    teacher = new Teacher(
+                            name.getText().toString(),
+                            btm,
+                            subjects,
+                            email.getText().toString(),
+                            phone.getText().toString(),
+                            password.getText().toString());
+
+                } catch (Exception e){
+                    Toast.makeText(getActivity(),"hello", Toast.LENGTH_SHORT).show();
+                }
+
 
                 if (checkTeacherData(teacher)){
                     Toast.makeText(getActivity(),"hello", Toast.LENGTH_SHORT).show();
@@ -109,7 +120,7 @@ public class RegistrationFragment extends Fragment {
             Toast.makeText(getActivity(), "Invalid email", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (teacher.phoneNumber.length() < 11 && phoneNumberValidator(teacher.phoneNumber)){
+        if (teacher.phoneNumber.length() < 11 || phoneNumberValidator(teacher.phoneNumber)){
             Toast.makeText(getActivity(), "Invalid phone number", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -117,6 +128,7 @@ public class RegistrationFragment extends Fragment {
             Toast.makeText(getActivity(), "Too short password", Toast.LENGTH_SHORT).show();
             return false;
         }
+        /*
         if (teacher.subjects.get(0).name.length() < 2){
             Toast.makeText(getActivity(), "Invalid subject", Toast.LENGTH_SHORT).show();
             return false;
@@ -124,7 +136,7 @@ public class RegistrationFragment extends Fragment {
         if (String.valueOf(teacher.subjects.get(0).price).length() < 3){
             Toast.makeText(getActivity(), "Invalid price", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
         return true;
     }
 
@@ -138,6 +150,7 @@ public class RegistrationFragment extends Fragment {
                 return false;
             }
         }
+        /*return (phoneNumber.matches("^\\+36 \\(\\d{1,2}\\) \\d{3}\\-\\d{3,4}$"));*/
         return true;
     }
 }
