@@ -106,14 +106,13 @@ Ha nem sikerül az azonosítás, hibaüzenet jelenik meg.
   _ Használhatósági követelmények
   A fejelsztésre kerülő szoftver a potenciális felhasználók számára könnyen tanulható és használható, minimális
   informatikai tudással alkalmazható.
-  _ Megbízhatósági követelmények
-  A kiaalakítandó szisztéma webes felületen keresztül ér el adatbázist. Az adatbázis konkurens elérése biztosított,
-  továbbá inkonzisztens állapotba történő kerülése normál használat mellett nem lehetséges.
-  _ Hatékonysági követelmények
-  _ Teljesítmény követelmények  
-   A városi könyvtár járási, központi jellegéből kifolyólag akár 20000 olvasóval is rendelkezhet, ebből következően
-  szélsőséges esetben sem lehet az együttesen a rendszert használók száma több 5000 főnél. Ennél jóval nagyobb
-  létszám kiszolgálására is alkalmas a struktúra.
+
+
+
+
+
+
+
   _ Méret követelmények
   A szoftver mérete nem haladja meg az 1 Gigabyte-ot.
   _ Hordozhatósági követelmények
@@ -121,13 +120,13 @@ Ha nem sikerül az azonosítás, hibaüzenet jelenik meg.
 
 ## 5. Funkcionális terv
 
-### 5.1 Rendszerszereplők
 
-A rendszerünkben két rendszerszereplő csoportot különböztetünk meg. Az egyik a könyveket kölcsönző olvasók csoportja. A másik a könyvtári adminisztrációt végző könyvtárosok csoportja. Az olvasók igénybe veszik a könyvtár szolgáltatásait, míg a könyvtárosok ezt nyilvántartják és kiszolgálják az olvasókat. A könyvtárosok több jogosultsággal rendelkeznek, mint az olvasók. Az ő feladatuk még az olvasók értesítése problémák esetén, pl. elmaradás vagy lejárt tagság. A könyvtárosok csoport része az adminisztrátori jogosultsággal rendelkező könyvtárosok csoportja, akik teljes jogosultsággal rendelkeznek. Ők végzik a rendszerben a könyvtárosok adminisztrálását.
 
-### 5.2 Rendszerhasználati esetek és lefutásaik
 
-#### 5.2.1 Bejelentkezés
+
+### 5.1 Rendszerhasználati esetek és lefutásaik
+
+#### 5.1.1 Bejelentkezés
 
 ```mermaid
 graph TD
@@ -140,7 +139,7 @@ graph TD
     E --> |sikeres| F[Szerkestő oldal]
 ```
 
-#### 5.2.2 Regisztrálás
+#### 5.1.2 Regisztrálás
 
 ```mermaid
 graph TD
@@ -154,7 +153,8 @@ graph TD
     E --> |sikeres| F[Szerkestő oldal]
 ```
 
-### 5.4 Képernyőtervek
+### 5.2
+Képernyőtervek
 
 Ez csak a Concept amit az elején csináltunk.  
 ![alt text](Images/Rendszerterv/UI_Concept.PNG)
