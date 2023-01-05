@@ -21,12 +21,4 @@ A rendszerbe való belépéshez regisztrációra van szükség.
 ### Felhasználói profil
 1. A felhasználó adatainak módosítására van lehetőség. Először a felhasználói email címet változtattam meg. Úgy választottam meg az új email címet, hogy ne legyen benne @ jel. Az email cím  sikeresen elmentésre került. Ezután ujjraindítottam a programot és próbáltam bejelentkezni új email címmel, de ekkor az "Email address is not valid" hibaüzenet  kaptam, mert az email cim nem tartalmazta a @ jelet.
 2.  Második lépésben a telefonszámot változtattam meg úgy, hogy az új telefonszám csak 1 szamot tartalmazott. Az új telefonszám sikeresen mentésre került.  
-3. Harmadik lépés a profilkép feltöltése és annak tesztelése volt. A rendszer jól müködött, 5MB volt a legnagyobb méretü file amit kipróbáltam, itt már a mentés az elég időigényes volt. Kép méretének korlátozása javasolt.  
-
-
-üöíóáéőú
-
-
-
-
-
+3. Harmadik lépés a profilkép feltöltése és annak tesztelése volt. A rendszer jól müködött, 5MB volt a legnagyobb méretü file amit kipróbáltam, itt már a mentés az elég időigényes volt. Kép méretének korlátozása javasolt. 
