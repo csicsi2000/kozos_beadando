@@ -103,26 +103,17 @@ Ha nem sikerül az azonosítás, hibaüzenet jelenik meg.
 ### 4.2 Nemfunkcionális követelmények
 
 - Termék követelmények
-  _ Használhatósági követelmények
-  A fejelsztésre kerülő szoftver a potenciális felhasználók számára könnyen tanulható és használható, minimális
+  - Használhatósági követelmények: 
+  A fejlesztésre kerülő szoftver a potenciális felhasználók számára könnyen tanulható és használható, minimális
   informatikai tudással alkalmazható.
-
-
-
-
-
-
-
-  _ Méret követelmények
+  
+  - Méret követelmények: 
   A szoftver mérete nem haladja meg az 1 Gigabyte-ot.
-  _ Hordozhatósági követelmények
+  
+  - Hordozhatósági követelmények: 
   Az adatbázis cserélhető legyen
 
 ## 5. Funkcionális terv
-
-
-
-
 
 ### 5.1 Rendszerhasználati esetek és lefutásaik
 
@@ -204,20 +195,20 @@ A fő branch a main. Minden új feature/bug esetén új branchet hozunk létre �
 gitGraph
     commit
     commit
-    branch feature
-    checkout feature
+    branch feature_1
+    checkout feature_1
     commit
     commit
     checkout main
-    merge feature
+    merge feature_1
     commit
     commit
-    branch bug
-    checkout bug
+    branch bug_1
+    checkout bug_1
     commit
     commit
     checkout main
-    merge bug
+    merge bug_1
     commit
     commit
 ```
