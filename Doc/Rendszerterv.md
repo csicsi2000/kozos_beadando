@@ -6,7 +6,7 @@
 
 ### 2.1 Projektszerepkörök, felelősségek
 
-Product owner: Szűcs János
+Product owner: Tápai Árpád
 A prioritással és üzleti értékkel ellátott felhasználói sztorikat tartalmazó Product Backlog létrehozása és felügyelete.
 
 Üzleti szereplők (Stakeholders):
@@ -15,6 +15,9 @@ A prioritással és üzleti értékkel ellátott felhasználói sztorikat tartal
 - Célzott felhasználók: tanárok és diákok.
 
 ### 2.2 Projektmunkások és felelősségeik
+
+Scrummaster:
+- Zheng Yuan Qi
 
 Frontend:
 
